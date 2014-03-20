@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -19,12 +20,16 @@ import javax.ws.rs.core.Response;
 
 import com.apigateway.adminutility.utils.MethodTypes;
 
-@Path("/GatewayProxy")
+@Path("/GatewayProxy/{targetResource : [a-zA-Z0-9/]+}")
 public class GatewayProxy {
 	
-	private String worker(HttpServletRequest httpRequest, int methodType, String payload){
+	private Response worker(HttpServletRequest httpRequest, int methodType, String targetResource, String payload){
+		//TODO Get token from Session Parameter
 		String token = httpRequest.getHeader("Authorization");
-		String demandedURL = httpRequest.getHeader("urldemanded");
+		
+		//TODO Get Base URL from Session Environment Parameter.
+		String baseurl = "https://192.168.2.71:8424/admin/";
+		String demandedURL = baseurl.concat(targetResource);
 		
 		Client client = ClientBuilder.newBuilder()
 		        .hostnameVerifier(new HostnameVerifier() {
@@ -52,21 +57,27 @@ public class GatewayProxy {
 				//TODO Handle it
 				break;
 		}
-		return response.readEntity(String.class);
+		return response;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response getProxy(@Context HttpServletRequest httpRequest){
-		return Response.ok(worker(httpRequest,MethodTypes.GET,null)).build();
+	public Response getProxy(@Context HttpServletRequest httpRequest, @PathParam("targetResource") String targetResource){
+		Response apiGateWayResponse = worker(httpRequest, MethodTypes.GET,targetResource, null);
+		return Response.status(apiGateWayResponse.getStatus())
+				.entity(apiGateWayResponse.readEntity(String.class))
+				.build();
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response postProxy(@Context HttpServletRequest httpRequest, String payload){
-		return Response.ok(worker(httpRequest,MethodTypes.POST,payload)).build();
+	public Response postProxy(@Context HttpServletRequest httpRequest, String payload, @PathParam("targetResource") String targetResource){
+		Response apiGateWayResponse = worker(httpRequest,MethodTypes.POST,targetResource,payload);
+		return Response.status(apiGateWayResponse.getStatus())
+				.entity(apiGateWayResponse.readEntity(String.class))
+				.build();
 	}
 	
 }

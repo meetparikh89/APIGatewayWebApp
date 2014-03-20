@@ -33,7 +33,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Admin Rest Service</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
+    <url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
   
 </web-app>

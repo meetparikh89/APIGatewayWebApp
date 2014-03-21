@@ -1,8 +1,9 @@
 /**
  * 
  */
-AdminUtilityApp.controller('NavigatorController', function($scope) {
+AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$rootScope) {
 		$scope.oneAtATime = true;
+		$rootScope.loginstatus = $cookies.loginCookie;
 
 		$scope.clientOptions = [ {
 			name : "Get Client",

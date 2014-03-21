@@ -1,5 +1,8 @@
 AdminUtilityApp.controller('AdminLoginController',
-    function($scope,$location,$http) {
+    function($scope,$location,$http,$cookies,$rootScope) {
+	
+		$rootScope.loginstatus = $cookies.loginCookie;
+	
         $scope.submitForm = function() {
         	var token = "Basic " + Base64.encode($scope.admin.userName + ":" + $scope.admin.password);      
         	$http({
@@ -8,6 +11,8 @@ AdminUtilityApp.controller('AdminLoginController',
         	    data: {'token': token, 'env' : $scope.admin.env},
         	})
         		.success(function(data){
+        			$cookies.loginCookie = 'true';
+        			$rootScope.loginstatus = $cookies.loginCookie;
         			$location.path('/home');
         		})
         		.error(function(data,status){

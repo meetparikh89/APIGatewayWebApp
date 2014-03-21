@@ -5,11 +5,13 @@
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-cookies.js"></script>
     <script type="text/javascript" src="scripts/AdminUtilityApp.js?v=1"></script>
     <script type="text/javascript" src="scripts/controllers/AdminLoginController.js?v=1"></script>
     <script type="text/javascript" src="scripts/factories/AdminUtilityHTTPInterceptor.js?v=1"></script>
     <script type="text/javascript" src="scripts/utils/Base64.js"></script>
     <script type="text/javascript" src="scripts/controllers/NavigatorController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/GetClientController.js"></script>
     <script	src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
     
     
@@ -21,7 +23,33 @@
 <body>
 <div id="main">
 	<h1>API Gateway</h1><br/>
-    <div ng-view></div>
+	<!--  <table>
+		<tr>
+			<td valign="top">-->
+				<div ng-show="loginstatus == 'true'" ng-controller="NavigatorController">
+					<div id="menu">
+					        <a href="loginservlet">Logout</a>
+							<accordion close-others="true"> </accordion-group> <accordion-group
+								heading="Client" is-open="false">
+							<p ng-repeat="option in clientOptions">
+								<a href={{option.hrefValue}}>{{option.name}}</a>
+							</p>
+					
+							</accordion-group> <accordion-group heading="Providers" is-open="false">
+							<p ng-repeat="option in providerOptions">
+								<a href={{option.hrefValue}}>{{option.name}}</a>
+							</p>
+							</accordion-group> <accordion-group heading="Capabilities" is-open="false">
+							<p ng-repeat="option in capabilityOptions">
+					            <a href={{option.hrefValue}}>{{option.name}}</a>
+					        </p>
+							</accordion-group> </accordion>
+					</div>
+				</div>
+			<!--  </td>
+			<td>--><div ng-view class="views"></div><!--  </td>
+		</tr>
+	</table>-->
 </div>
 </body>
 </html>

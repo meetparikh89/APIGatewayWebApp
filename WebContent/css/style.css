@@ -2,10 +2,6 @@
 	The menu
 --------------------------*/
 
-html,body{
-	width: 100%
-}
-
 h1{
 	text-align: center;
 }
@@ -23,9 +19,7 @@ h1{
 }
 
 div.views{
-	width: 900px;
+	min-width : 800px;
 	margin :5px;
 	float : left;
-	 
-   
 }

@@ -1,4 +1,4 @@
-var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap'])
+var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap','ngCookies'])
 
 .config(['$routeProvider',
         function($routeProvider) {
@@ -10,6 +10,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     .when('/home', {
                     	controller: 'NavigatorController',
                         templateUrl: 'views/home.html'
+                    })
+                    .when('/getClient', {
+                    	templateUrl : 'views/getClient.html',
+                    	controller  : 'GetClientController'
                     })
                     .otherwise({
                         redirectTo: '/'

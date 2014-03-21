@@ -6,8 +6,7 @@
 					<td><label>UserName:</label></td>
 					<td><input type="text" name="username" ng-model="admin.userName" ng-minlength="3" ng-maxlength="8" required></td>
 					<td>
-					<span ng-show="loginform.username.$invalid">UserName is mandatory and size should be between 3 & 8.</span>
-            		<span ng-hide="loginform.username.$invalid"></span>
+						<span ng-show="loginform.username.$invalid">UserName is mandatory and size should be between 3 & 8.</span>
 					</td>
 				</tr>
 				
@@ -16,7 +15,6 @@
 					<td><input type="password" name="password" ng-model="admin.password" ng-minlength="3" ng-maxlength="8" required></td>
 					<td>
 						<span ng-show="loginform.password.$invalid">Password is mandatory and size should be between 3 & 8. </span>
-            			<span ng-hide="loginform.password.$invalid"></span>
 					</td>		
 				</tr>
 				
@@ -24,8 +22,7 @@
 					<td><label>Environment:</label></td>
 					<td><input type="radio" ng-model="admin.env" value="ref" name="environment" ng-required="!loginform.admin.env"> REF <input type="radio" ng-model="admin.env" value="live" name="environment" ng-required="!loginform.admin.env">LIVE</td>
 					<td>
-						<span ng-show="loginform.environment.$invalid">Atleast one environment should be selected.<br/> </span>
-            			<span ng-hide="loginform.environment.$invalid"><br/></span>
+						<span ng-show="loginform.environment.$invalid">Atleast one environment should be selected.</span>
 					</td>
 				</tr>
 				<tr>
@@ -34,8 +31,8 @@
 				<tr>
 					<td></td>
 					<td>
+						<button class="btn-primary" ng-click="submitForm()" ng-disabled="loginform.$invalid">Submit</button>
 						<button type="reset" class="btn-primary" ng-click="resetLogin()">Reset</button>
-            			<button class="btn-primary" ng-click="submitForm()" ng-disabled="loginform.$invalid">Submit</button>
 					</td>
 				</tr>
 				

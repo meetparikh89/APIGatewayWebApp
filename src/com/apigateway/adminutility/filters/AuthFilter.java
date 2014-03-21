@@ -31,8 +31,8 @@ public class AuthFilter implements Filter{
 		
 		if(httpServletRequest.getServletPath().equals("/views/login.html")){
 			filterChain.doFilter(request, response);
-		} else if(httpServletRequest.getSession().getAttribute("username") == null){
-			System.out.println("Redirecting as no Session found.");
+		} else if(httpServletRequest.getSession().getAttribute("token") == null || httpServletRequest.getSession().getAttribute("baseUrl") == null){
+			System.out.println("Redirecting as no valid session found.");
 			httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 		} else {
 			System.out.println("Successfully Authenticated user.");

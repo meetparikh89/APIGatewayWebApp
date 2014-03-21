@@ -9,11 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <context-param>
     <param-name>propertiesfile</param-name>
     <param-value>/WEB-INF/config.properties</param-value>
   </context-param>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
   <filter>
     <filter-name>AuthFilter</filter-name>
     <filter-class>com.apigateway.adminutility.filters.AuthFilter</filter-class>
@@ -35,5 +37,12 @@
     <servlet-name>Admin Rest Service</servlet-name>
     <url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.apigateway.adminutility.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/loginservlet</url-pattern>
+  </servlet-mapping>
 </web-app>

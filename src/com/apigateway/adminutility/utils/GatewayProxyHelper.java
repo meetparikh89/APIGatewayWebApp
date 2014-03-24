@@ -1,11 +1,8 @@
 package com.apigateway.adminutility.utils;
 
 import java.io.IOException;
-import java.util.Properties;
-
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -33,12 +30,6 @@ public class GatewayProxyHelper {
 	}
 	
 	private Response worker(String token, String baseUrl, int methodType, String targetResource, String payload){
-		//TODO Get token from Session Parameter
-		//Authorization: Basic YWRtaW46YWRtaW4=
-		//String token = "Basic YWRtaW46YWRtaW4=";
-		
-		//TODO Get Base URL from Session Environment Parameter.
-		//String baseurl = "https://192.168.2.71:8424/admin/";
 		String demandedURL = baseUrl.concat(targetResource);
 		
 		Client client = ClientBuilder.newBuilder()

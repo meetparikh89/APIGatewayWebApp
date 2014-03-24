@@ -26,9 +26,6 @@ public class AuthFilter implements Filter{
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 		System.out.println(httpServletRequest.getServletPath());
 		
-		//String url = httpServletRequest.getRequestURL().toString();
-		//String baseURL = url.substring(0, url.length() - httpServletRequest.getRequestURI().length()) + httpServletRequest.getContextPath() + "/";
-		
 		if(httpServletRequest.getServletPath().equals("/views/login.html")){
 			filterChain.doFilter(request, response);
 		} else if(httpServletRequest.getSession().getAttribute("token") == null || httpServletRequest.getSession().getAttribute("baseUrl") == null){

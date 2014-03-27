@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		
 		GatewayProxyHelper gatewayProxyHelper = new GatewayProxyHelper();
 		boolean validUser = gatewayProxyHelper.loginWorker(token, baseUrl);
-		if(validUser){
+		if(validUser == true){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("token",token);
 			session.setAttribute("baseUrl",baseUrl);

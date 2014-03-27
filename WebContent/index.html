@@ -22,10 +22,13 @@
 </head>
 <body>
 <div id="main">
-	<h1>API Gateway</h1><br/>
-	<!--  <table>
-		<tr>
-			<td valign="top">-->
+	<div id="banner">
+		<center>
+			<img src="img/logo-o2.svg" style="margin-right: 50px;"></img>
+			<span style="font-weight: bold;">API Gateway</span>
+			<img src="img/logo-telefonica.svg" style="margin-left: 50px;"></img>
+		</center>
+	</div>
 				<div ng-show="loginstatus == 'true'" ng-controller="NavigatorController">
 					<div id="menu">
 					        <a href="loginservlet">Logout</a>
@@ -46,10 +49,7 @@
 							</accordion-group> </accordion>
 					</div>
 				</div>
-			<!--  </td>
-			<td>--><div ng-view class="views"></div><!--  </td>
-		</tr>
-	</table>-->
-</div>
+				<div ng-view class="views"></div>
+	</div>
 </body>
 </html>

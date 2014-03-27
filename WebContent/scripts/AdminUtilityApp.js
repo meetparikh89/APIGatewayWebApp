@@ -19,11 +19,19 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                         redirectTo: '/'
                     });
                   }
-      	]);
-//.config(['$httpProvider',function($httpProvider) {
-//  $httpProvider.interceptors.push('AdminUtilityHttpResponseInterceptor');
-//}]);
-
-
-
-
+      	])
+      	
+.config(['$provide','$httpProvider',function ($provide, $httpProvider) {
+	 $provide.factory('SessionHttpInterceptor', function ($q,$location) {
+		 return {
+			 responseError: function (rejection) {
+				 console.log(rejection);
+				 if(rejection.status == 401){
+					 $location.path('/');
+				 }
+				 return $q.reject(rejection);
+			 }
+		 };
+	 });
+	 $httpProvider.interceptors.push('SessionHttpInterceptor');
+ }]);

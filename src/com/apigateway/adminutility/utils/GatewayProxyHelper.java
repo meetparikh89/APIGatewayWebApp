@@ -1,9 +1,11 @@
 package com.apigateway.adminutility.utils;
 
 import java.io.IOException;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -16,11 +18,7 @@ public class GatewayProxyHelper {
 	
 	public boolean loginWorker(String token, String baseUrl) throws IOException{
 		Response response = worker(token,baseUrl,MethodTypes.GET,"client/",null);
-		if(response.getStatus() != 200){
-			return false;
-		} else {
-			return true;
-		}
+		return response.getStatus() == HttpServletResponse.SC_OK;
 	}
 
 	public Response sessionWorker(HttpServletRequest request, int methodType, String targetResource, String payload){
@@ -30,8 +28,6 @@ public class GatewayProxyHelper {
 	}
 	
 	private Response worker(String token, String baseUrl, int methodType, String targetResource, String payload){
-		String demandedURL = baseUrl.concat(targetResource);
-		
 		Client client = ClientBuilder.newBuilder()
 		        .hostnameVerifier(new HostnameVerifier() {
 					
@@ -42,7 +38,7 @@ public class GatewayProxyHelper {
 				})
 		        .build();
 		
-		WebTarget webTarget = client.target(demandedURL);
+		WebTarget webTarget = client.target(baseUrl.concat(targetResource));
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 		invocationBuilder.header("Authorization", token);
 		Response response = null;

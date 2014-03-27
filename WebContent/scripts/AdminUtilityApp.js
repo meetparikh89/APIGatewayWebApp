@@ -22,11 +22,12 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
       	])
       	
 .config(['$provide','$httpProvider',function ($provide, $httpProvider) {
-	 $provide.factory('SessionHttpInterceptor', function ($q,$location) {
+	 $provide.factory('SessionHttpInterceptor', function ($q,$location,$cookies) {
 		 return {
 			 responseError: function (rejection) {
 				 console.log(rejection);
-				 if(rejection.status == 401){
+				 $cookies.loginCookie = undefined;
+				 if(rejection.status == 401 || rejection.status == 500){
 					 $location.path('/');
 				 }
 				 return $q.reject(rejection);

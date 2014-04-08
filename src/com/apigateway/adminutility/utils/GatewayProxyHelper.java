@@ -17,18 +17,20 @@ import javax.ws.rs.core.Response;
 public class GatewayProxyHelper {
 	
 	public boolean loginWorker(String token, String baseUrl) throws IOException{
-		Response response = worker(token,baseUrl,MethodTypes.GET,"client/",null);
+		Response response = worker(token, MethodTypes.GET, null,
+				getClient().target(baseUrl.concat("client/")));
 		return response.getStatus() == HttpServletResponse.SC_OK;
 	}
 
 	public Response sessionWorker(HttpServletRequest request, int methodType, String targetResource, String payload){
 		String token = request.getSession().getAttribute("token").toString();
 		String baseUrl = request.getSession().getAttribute("baseUrl").toString();
-		return worker(token, baseUrl, methodType, targetResource, payload);
+		return worker(token, methodType, payload,
+				getClient().target(baseUrl.concat(targetResource)));
 	}
 	
-	private Response worker(String token, String baseUrl, int methodType, String targetResource, String payload){
-		Client client = ClientBuilder.newBuilder()
+	private Client getClient() {
+		return ClientBuilder.newBuilder()
 		        .hostnameVerifier(new HostnameVerifier() {
 					
 					@Override
@@ -37,8 +39,10 @@ public class GatewayProxyHelper {
 					}
 				})
 		        .build();
-		
-		WebTarget webTarget = client.target(baseUrl.concat(targetResource));
+	}
+
+	private Response worker(String token, int methodType, String payload,
+			WebTarget webTarget) {
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 		invocationBuilder.header("Authorization", token);
 		Response response = null;
@@ -47,8 +51,15 @@ public class GatewayProxyHelper {
 				response = invocationBuilder.get();
 				break;
 			case MethodTypes.POST :
-				Entity<String> jsonEntity = Entity.entity(payload, MediaType.APPLICATION_JSON);
-				response = invocationBuilder.post(jsonEntity);
+				Entity<String> jsonPostEntity = Entity.entity(payload, MediaType.APPLICATION_JSON);
+				response = invocationBuilder.post(jsonPostEntity);
+				break;
+			case MethodTypes.PUT :
+				Entity<String> jsonPutEntity = Entity.entity(payload,MediaType.APPLICATION_JSON);
+				response = invocationBuilder.put(jsonPutEntity);
+				break;
+			case MethodTypes.DELETE :
+				response = invocationBuilder.delete();
 				break;
 			default:
 				//TODO Handle it

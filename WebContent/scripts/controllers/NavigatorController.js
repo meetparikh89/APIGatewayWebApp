@@ -11,6 +11,9 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 		}, {
 			name : "Create Client",
 			hrefValue:"#createClient"
+		}, {
+			name : "Delete Client",
+			hrefValue:"#deleteClient"
 		} ];
 		
 		$scope.providerOptions = [ {

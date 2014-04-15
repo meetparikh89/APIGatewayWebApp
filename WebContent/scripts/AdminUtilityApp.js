@@ -1,4 +1,4 @@
-var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap','ngCookies'])
+var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap','ngCookies','ngTable'])
 
 .config(['$routeProvider',
         function($routeProvider) {
@@ -6,6 +6,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     .when('/', {
                         controller: 'AdminLoginController',
                         templateUrl: 'views/login.html'
+                    })
+                    .when('/error', {
+                    	controller: 'ErrorController',
+                        templateUrl: 'error.html'
                     })
                     .when('/home', {
                     	controller: 'NavigatorController',
@@ -18,6 +22,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     .when('/createClient', {
                     	templateUrl : 'views/createClient.html',
                     	controller  : 'CreateClientController'
+                    })
+                    .when('/getClient/:client',{
+                     controller: 'GetClientInfoController',
+                     templateUrl: 'views/getClientInfo.html'
                     })
                     .when('/deleteClient', {
                     	templateUrl : 'views/deleteClient.html',
@@ -35,8 +43,13 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
 			 responseError: function (rejection) {
 				 console.log(rejection);
 				 $cookies.loginCookie = undefined;
-				 if(rejection.status == 401 || rejection.status == 500){
-					 $location.path('/');
+				 if(rejection.status == 401){
+					 $location.path('/');			 
+				 }
+				 if(rejection.status >= 500 && rejection.status < 600){
+					 sessionStorage.error_status = rejection.status;
+					 sessionStorage.error_data = rejection.data;
+					 $location.path('/error');
 				 }
 				 return $q.reject(rejection);
 			 }

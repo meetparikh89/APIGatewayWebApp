@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+	<table border="true" ng-show="ClientInfo">
+		<th colspan="2" style="text-align: center;">Client -
+			{{ClientInfo.client_id}}</th>
+		<tr class="heading">
+			<td>Provision ID</td>
+			<td>Capability ID</td>
+		</tr>
+		<tr ng-repeat="provision in ClientInfo.provisions">
+			<td>{{provision.provision_key.provider_id}}</td>
+			<td>{{provision.provision_key.capability_id}}</td>
+		</tr>
+	</table>
+	<div ng-bind="ClientInfo_message"></div>
+</div>

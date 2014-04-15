@@ -42,3 +42,7 @@ div.views{
 	height: auto;
 	overflow: hidden;
 }
+
+.ng-table {
+    border: 0px;
+}

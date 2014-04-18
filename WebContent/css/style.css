@@ -11,6 +11,14 @@ body,html{
 	display: block;
 }
 
+.getClientTable{
+	width: 100%;
+}
+
+td{
+	padding: 5px;
+}
+
 #loginform{
 	color: white;
 	width: 500px;
@@ -30,16 +38,20 @@ div.views{
 	float : left;
 }
 
+#error-textbox{
+	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat scroll 0% 0% #F9F9F9;
+}
+
 #banner{
 	height: 50px;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
 	overflow: visible;
-	border-bottom: 1px solid #D9D9D9;
-	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat scroll 0% 0% #F9F9F9;
+	border-bottom: 1px solid #D9D9D9;	
 	display: block;
 	height: auto;
+	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat scroll 0% 0% #F9F9F9;
 	overflow: hidden;
 }
 

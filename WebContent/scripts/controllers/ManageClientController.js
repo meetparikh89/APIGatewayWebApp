@@ -1,6 +1,6 @@
 AdminUtilityApp
 		.controller(
-				'GetClientController',
+				'ManageClientController',
 				function($scope, $http,ngTableParams) {
 					
 					$scope.getClientList = function(){

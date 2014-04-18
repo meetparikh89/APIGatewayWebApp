@@ -6,15 +6,12 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 		$rootScope.loginstatus = $cookies.loginCookie;
 
 		$scope.clientOptions = [ {
-			name : "Get Client",
-			hrefValue:"#getClient"
+			name : "Manage Client",
+			hrefValue:"#manageClient"
 		}, {
 			name : "Create Client",
 			hrefValue:"#createClient"
-		}, {
-			name : "Delete Client",
-			hrefValue:"#deleteClient"
-		} ];
+		}];
 		
 		$scope.providerOptions = [ {
 			name : "Get Providers",

@@ -15,9 +15,9 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     	controller: 'NavigatorController',
                         templateUrl: 'views/home.html'
                     })
-                    .when('/getClient', {
-                    	templateUrl : 'views/getClient.html',
-                    	controller  : 'GetClientController'
+                    .when('/manageClient', {
+                    	templateUrl : 'views/manageClient.html',
+                    	controller  : 'ManageClientController'
                     })
                     .when('/createClient', {
                     	templateUrl : 'views/createClient.html',
@@ -27,10 +27,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                      controller: 'GetClientInfoController',
                      templateUrl: 'views/getClientInfo.html'
                     })
-                    .when('/deleteClient', {
-                    	templateUrl : 'views/deleteClient.html',
-                    	controller  : 'DeleteClientController'
-                    })
+//                    .when('/deleteClient', {
+//                    	templateUrl : 'views/deleteClient.html',
+//                    	controller  : 'DeleteClientController'
+//                    })
                     .otherwise({
                         redirectTo: '/'
                     });
@@ -48,7 +48,7 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
 				 }
 				 if(rejection.status >= 500 && rejection.status < 600){
 					 sessionStorage.error_status = rejection.status;
-					 sessionStorage.error_data = rejection.data;
+					 sessionStorage.error_data = Base64.encode(rejection.data);
 					 $location.path('/error');
 				 }
 				 return $q.reject(rejection);

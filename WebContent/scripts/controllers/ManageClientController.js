@@ -55,6 +55,8 @@ AdminUtilityApp
 											function(data) {
 												$scope.client_message = data.error_description;
 											});
+						} else {
+							$scope.client_message = "";
 						}
 					};
 				});

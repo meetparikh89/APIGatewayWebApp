@@ -27,10 +27,6 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                      controller: 'GetClientInfoController',
                      templateUrl: 'views/getClientInfo.html'
                     })
-//                    .when('/deleteClient', {
-//                    	templateUrl : 'views/deleteClient.html',
-//                    	controller  : 'DeleteClientController'
-//                    })
                     .otherwise({
                         redirectTo: '/'
                     });

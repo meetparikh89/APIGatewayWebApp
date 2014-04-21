@@ -1,60 +1,63 @@
 /*-------------------------
 	The menu
 --------------------------*/
-body,html{
+body,html {
 	color: white;
-	background: url('../img/o2background.png') repeat-x scroll 0px 0px #449ED0;
-	font-family: Frutiger55,sans-serif;
+	background: url('../img/o2background.png') repeat-x scroll 0px 0px
+		#449ED0;
+	font-family: Frutiger55, sans-serif;
 	font-size: 1rem;
 	line-height: 1em;
 	clear: both;
 	display: block;
 }
 
-.getClientTable{
+.getClientTable {
 	width: 100%;
 }
 
-td{
+td {
 	padding: 5px;
 }
 
-#loginform{
+#loginform {
 	color: white;
 	width: 500px;
 	margin: 0 auto;
 }
 
 #menu {
-    width: 300px;
-    padding: 0px 10px;
-    margin :0px;
-    float : left;
+	width: 300px;
+	padding: 0px 10px;
+	margin: 0px;
+	float: left;
 }
 
-div.views{
-	min-width : 800px;
-	margin :5px;
-	float : left;
+div.views {
+	min-width: 800px;
+	margin: 5px;
+	float: left;
 }
 
-#error-textbox{
-	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat scroll 0% 0% #F9F9F9;
+#error-textbox {
+	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat
+		scroll 0% 0% #F9F9F9;
 }
 
-#banner{
+#banner {
 	height: 50px;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
 	overflow: visible;
-	border-bottom: 1px solid #D9D9D9;	
+	border-bottom: 1px solid #D9D9D9;
 	display: block;
 	height: auto;
-	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat scroll 0% 0% #F9F9F9;
+	background: linear-gradient(to bottom, #F9F9F9 0px, #EAEAEA 100%) repeat
+		scroll 0% 0% #F9F9F9;
 	overflow: hidden;
 }
 
 .ng-table {
-    border: 0px;
+	border: 0px;
 }

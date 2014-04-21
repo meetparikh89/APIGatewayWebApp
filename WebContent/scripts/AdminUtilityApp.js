@@ -27,6 +27,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                      controller: 'GetClientInfoController',
                      templateUrl: 'views/getClientInfo.html'
                     })
+                    .when('/confirmationPage', {
+                        templateUrl : 'views/confirmationPage.html',
+                        controller : 'ConfirmationPageController'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });

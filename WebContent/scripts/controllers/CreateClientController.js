@@ -58,7 +58,7 @@ AdminUtilityApp
 					// 	});
 					// };
 					$scope.createClient = function() {
-						var addArray = '';
+						var addArray = [];
 						console.log("IPRangeCheckBox" + $scope.IPRangeCheckBox);
 						if ($scope.IPRangeCheckBox) {
 
@@ -73,13 +73,12 @@ AdminUtilityApp
 						ConfirmationDataFactory.setAddValidityPeriod(timeSpan);
 
 						var timeUnit = validity.value;
-						ConfirmationDataFactory.setClientName(clientName);
 						ConfirmationDataFactory.setAddValidityUnit(timeUnit);
-						ConfirmationDataFactory
-								.setClientName($scope.clientName);
+						ConfirmationDataFactory.setClientName($scope.clientName.toLowerCase());
 						ConfirmationDataFactory.setPassword($scope.password);
 						ConfirmationDataFactory.setAddIPRanges(addArray);
 						ConfirmationDataFactory.setAllIPRanges(addArray);
+						ConfirmationDataFactory.setUpdateRequest(false);
 						$location.path("/confirmationPage");
 					};
 				});

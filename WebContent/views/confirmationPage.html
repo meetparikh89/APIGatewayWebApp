@@ -27,7 +27,11 @@
 		<table>
 			<tr>
 				<td><input type="button" ng-click="back()" value="Back" class="btn-primary"/></td>
-				<td><input type="button" value="Submit" ng-click="submit()" class="btn-primary"/></td>
+				<td><input type="button" value="Submit" ng-click="submit()" class="btn-primary" ng-hide="confirmation_message"/></td>
+			</tr>
+			<tr>
+				<td ng-bind="confirmation_message"></td>
+			</tr>
 		</table>
 	</div>
 </div>

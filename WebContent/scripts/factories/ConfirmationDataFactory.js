@@ -8,12 +8,13 @@ var ValidityPeriod='';
 var ValidityUnit='';
 var IsUpdate='';
 var Password='';
+
 return {
 setClientName :function(clientName){
 ClientName=clientName;
 },
-setUpdateRequest:function(){
-IsUpdate=true;
+setUpdateRequest:function(isUpdate){
+IsUpdate=isUpdate;
 },
 setPassword:function(password){
 Password=password;

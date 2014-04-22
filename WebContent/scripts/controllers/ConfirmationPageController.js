@@ -4,38 +4,14 @@ AdminUtilityApp
 				function($scope, $http, ConfirmationDataFactory) {
 					console.log('Called the Confirmation Page Controller');
 					$scope.clientName = ConfirmationDataFactory.getClientName();
-					$scope.validityTimeSpan = ConfirmationDataFactory
-							.getValidityPeriod();
-					TimeUnitPatt = ConfirmationDataFactory.getValidityUnit();
-					var validityValue = 'P' + $scope.validityTimeSpan
-							+ TimeUnitPatt;
 					var password = ConfirmationDataFactory.getPassword();
-
-					if (TimeUnitPatt == 'M') {
-						$scope.validityTimeUnit = "Months";
-					} else if (TimeUnitPatt == 'D') {
-						$scope.validityTimeUnit = "Days";
-					} else if (TimeUnitPatt == 'Y') {
-						$scope.validityTimeUnit = "Years";
-					} else {
-						$scope.validityTimeUnit = "Invalid";
-					}
-					$scope.allIPRanges = ConfirmationDataFactory
-							.getAllIPRanges();
-
-					console.log("All IP Ranges"
-							+ JSON.stringify($scope.allIPRanges));
-
-					$scope.deleteIPRanges = ConfirmationDataFactory
-							.getIPRangesToBeDeleted();
-
-					$scope.addIPRanges = ConfirmationDataFactory
-							.getIPRangesToBeAdded();
-
-					console.log("Deleted ranges"
-							+ JSON.stringify($scope.deleteIPRanges));
-					console.log("Adding range"
-							+ JSON.stringify($scope.addIPRanges));
+					var validityValue = ConfirmationDataFactory.getValidity();
+					$scope.allIPRanges = ConfirmationDataFactory.getAllIPRanges();
+					console.log("All IP Ranges" + JSON.stringify($scope.allIPRanges));
+					$scope.deleteIPRanges = ConfirmationDataFactory.getIPRangesToBeDeleted();
+					$scope.addIPRanges = ConfirmationDataFactory.getIPRangesToBeAdded();
+					console.log("Deleted ranges" + JSON.stringify($scope.deleteIPRanges));
+					console.log("Adding range" + JSON.stringify($scope.addIPRanges));
 
 					$scope.back = function() {
 						window.history.back();
@@ -64,6 +40,9 @@ AdminUtilityApp
 																	"validity_period" : validityValue
 																}
 															})
+									.success(function(data){
+										console.log(JSON.stringify(data));
+									})
 															.error(
 																	function(data) {
 																		errorFoundInCred = true;

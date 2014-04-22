@@ -45,6 +45,14 @@ AdminUtilityApp
 						return !(IPrange.id === $scope.IPranges[$scope.IPranges.length - 1].id);
 					};
 
+
+					$scope.ValidateIPaddress = function(ipaddress) {
+ 						if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress)){
+    						return true;
+  						}
+						return false;
+					}
+
 					// $scope.checkClient = function() {
 					// 	$http({
 					// 		method : 'GET',
@@ -58,27 +66,40 @@ AdminUtilityApp
 					// 	});
 					// };
 					$scope.createClient = function() {
+
+						if($scope.clientName == undefined || $scope.clientName == '' || $scope.clientName == null){
+							$scope.createClient_message = 'Please enter client name.';
+						} else if($scope.password != $scope.confirmpassword){
+							$scope.createClient_message = 'Password mismatch.';
+						} else {
+							var errorOccured = false;
 						var addArray = [];
 						console.log("IPRangeCheckBox" + $scope.IPRangeCheckBox);
 						if ($scope.IPRangeCheckBox) {
 
 							for (var i = 0; i < $scope.IPranges.length; i++) {
-								addArray.push($scope.IPranges[i]);
-
+								if($scope.ValidateIPaddress($scope.IPranges[i].to) == true && $scope.ValidateIPaddress($scope.IPranges[i].from) == true){
+									addArray.push($scope.IPranges[i]);
+								} else {
+									$scope.createClient_message = 'Invalid IP Address entered.';
+									errorOccured = true;
+									break;
+								}
 							}
-						}
-						console.log("Adding elements " + addArray);
-						var validity = document.getElementById("validityCombo");
-						var timeSpan = $scope.validityPeriod;
-						ConfirmationDataFactory.setAddValidityPeriod(timeSpan);
 
-						var timeUnit = validity.value;
-						ConfirmationDataFactory.setAddValidityUnit(timeUnit);
+							ConfirmationDataFactory.setAddIPRanges(addArray);
+							ConfirmationDataFactory.setAllIPRanges(addArray);
+
+						}
+
+						if(errorOccured == false){
+						ConfirmationDataFactory.setValidity($scope.validityPeriod);
 						ConfirmationDataFactory.setClientName($scope.clientName.toLowerCase());
 						ConfirmationDataFactory.setPassword($scope.password);
-						ConfirmationDataFactory.setAddIPRanges(addArray);
-						ConfirmationDataFactory.setAllIPRanges(addArray);
+						
 						ConfirmationDataFactory.setUpdateRequest(false);
 						$location.path("/confirmationPage");
+						}
+					}
 					};
 				});

@@ -4,10 +4,7 @@
 			<tr>
 				<th>Client Name - {{clientName}}</th>
 			</tr>
-			<tr>
-				<td>Password will expire in {{validityTimeSpan}}
-					{{validityTimeUnit}}</td>
-			</tr>
+			
 		</table>
 		<table border="true" style="width: 100%">
 			<th colspan="3" style="text-align: center;">IP Ranges</th>
@@ -29,9 +26,7 @@
 				<td><input type="button" ng-click="back()" value="Back" class="btn-primary"/></td>
 				<td><input type="button" value="Submit" ng-click="submit()" class="btn-primary" ng-hide="confirmation_message"/></td>
 			</tr>
-			<tr>
-				<td ng-bind="confirmation_message"></td>
-			</tr>
 		</table>
+		<td ng-bind="confirmation_message"></td>
 	</div>
 </div>

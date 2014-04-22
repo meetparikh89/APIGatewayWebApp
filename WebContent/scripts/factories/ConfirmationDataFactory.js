@@ -4,8 +4,7 @@ var ClientName='';
 var AllIPRanges='';
 var AddIPRanges ='';
 var DeleteIPRanges='';
-var ValidityPeriod='';
-var ValidityUnit='';
+var Validity = '';
 var IsUpdate='';
 var Password='';
 
@@ -19,16 +18,12 @@ IsUpdate=isUpdate;
 setPassword:function(password){
 Password=password;
 },
+setValidity:function(validity){
+	Validity = validity;
+},
 setAllIPRanges:function(allIPRanges){
 AllIPRanges=allIPRanges;
 },
-setAddValidityPeriod:function(validityPeriod){
-ValidityPeriod=validityPeriod;
-},
-setAddValidityUnit:function(validityUnit){
-ValidityUnit=validityUnit;
-},
-
 setAddIPRanges:function(IPRange){
 AddIPRanges=IPRange;
 },
@@ -50,11 +45,8 @@ return DeleteIPRanges;
 getAllIPRanges:function(){
 return AllIPRanges;
 },
-getValidityUnit:function(validityUnit){
-return ValidityUnit;
-},
-getValidityPeriod:function(validityPeriod){
-return ValidityPeriod;
+getValidity:function(){
+return Validity;
 },
 getPassword:function(){
 return Password;

@@ -48,7 +48,7 @@
 		<div ng-show="loginstatus == 'true'"
 			ng-controller="NavigatorController">
 			<div id="menu">
-				<a href="loginservlet">Logout</a>
+				<span style="color: white;">Logged into {{env}}</span> <a href="loginservlet"><img src="img/logout.png" style="padding:5px"></img></a>
 				<accordion close-others="true"> </accordion-group> <accordion-group
 					heading="Client" is-open="false">
 				<p ng-repeat="option in clientOptions">

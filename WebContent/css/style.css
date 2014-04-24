@@ -102,3 +102,35 @@ div.views {
 	color: red;
 	text-align: left;
 }
+
+.method{
+	text-transform: uppercase;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display: inline-block;
+	padding: 2px 4px;
+	font-size: 10.998px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	vertical-align: baseline;
+	white-space: nowrap;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.GET{
+	background-color: #4DAB58;
+}
+
+.PUT{
+	background-color: #36F;
+}
+
+.DELETE{
+	background-color: #C30;
+}
+
+.POST{
+	background-color: #CC9900;
+}

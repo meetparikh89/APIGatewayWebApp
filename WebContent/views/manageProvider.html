@@ -1,12 +1,15 @@
 <div class="jumbotron text-center" style="width: 100%">
     <div style="width: 100%">
     	<h3><u>Providers</u></h3>
+        <input type="search" ng-model="searchProvider" />
+        <div ng-bind="provider_message" class="errorMessage"></div>
+        <br />
     	<table ng-table="listProviderTable" border="true" style="width: 100%">
                 <tr>
                     <th style="text-align: left;" width="50px">Sr.</th>
                     <th style="text-align: left; padding-left: 10px" colspan="3">Provider</th>
                 </tr>
-                <tr ng-repeat="provider in providers">
+                <tr ng-repeat="provider in providers | filter : searchProvider">
                     <td>{{$index+1}}</td>
                     <td style="text-align: left; padding-left: 10px"> {{provider.id}}</td>
                     <td><img src="img/edit.png" title="Edit"></img></td>
@@ -14,5 +17,4 @@
                 </tr>
             </table>
 	</div>
-    <div ng-bind="provider_message" class="errorMessage"></div>
 </div>

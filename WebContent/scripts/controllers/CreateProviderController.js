@@ -9,6 +9,10 @@ AdminUtilityApp.controller('CreateProviderController', ['$scope','$http','$locat
 			$scope.createProvider_message = "Provider Base url cannot be empty.";
 			return false;
 		}
+		if(!($scope.providerBaseUrl.match('^[^:]+://[^/:]+:[0-9]{1,5}(/.*)?$'))){
+			$scope.createProvider_message = "Please provide valid provider base url.";
+			return false;
+		}
 		return true;
 	}
 

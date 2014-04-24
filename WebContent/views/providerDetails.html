@@ -1,0 +1,53 @@
+<div class="jumbotron text-center getInfo">
+
+	<table border="1" style="width: 100%">
+		<tr>
+			<td>Name</td>
+			<td>{{providerId}}</td>
+		</tr>
+		<tr>
+			<td>Uri</td>
+			<td>{{providerInfo.base_uri}}</td>
+		</tr>
+<!-- 		<tr> -->
+<!-- 			<td>Cerificate</td> -->
+<!-- 			<td style="word-wrap: break-word; max-width: 100"></td> -->
+<!-- 		</tr> -->
+	</table>
+	<div style="padding-top: 5px; width: 100%">
+		<table  border="1" style="padding-top: 5;width: 100%">
+			<th colspan="3" style="text-align: center;">Capabilites</th>
+			<tr class="heading">
+				<th style="text-align: center; width: 25%" >Name</th>
+				<th style="text-align: center; width: 75%" >Routes</th>
+			</tr>
+<!-- 			<tr class="heading"> -->
+<!-- 				<th style="text-align: center; width: 33%">Path</th> -->
+<!-- 				<th style="text-align: center; width: 33%">Methods</th> -->
+<!-- 			</tr> -->
+			
+			<tr ng-repeat="capability in capabilities">
+				<td style="border-right: 0">{{capability.name}}</td>
+				<td style="padding: 0; border: 0">
+					<table border="1" style="width: 100%">
+						<tr ng-repeat="route in capability.routes">
+							<td style="width: 80%">{{route.path}}</td>
+							<td style="width: 20%">{{route.methods}}</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div>
+		<table>
+			<tr class="heading">
+				<th style="text-align: center; width: 100%" >Certificate</th>
+			</tr>
+			<tr class="heading">
+				<td >{{providerInfo.certificate}}</th>
+			</tr>
+		</table>
+	</div>
+</div> 

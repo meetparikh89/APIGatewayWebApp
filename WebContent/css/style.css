@@ -96,3 +96,8 @@ div.views {
   font-weight: 500;
   line-height: 1.1;
 }
+
+.errorMessage{
+	color: red;
+	text-align: left;
+}

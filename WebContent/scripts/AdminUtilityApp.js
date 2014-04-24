@@ -39,6 +39,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                         controller: 'CreateClientController',
                         templateUrl: 'views/createClient.html'
                     })
+                    .when('/createProvider',{
+                        controller: 'CreateProviderController',
+                        templateUrl: 'views/createProvider.html'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });

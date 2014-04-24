@@ -70,6 +70,7 @@ div.views {
 }
 
 .logoutBox{
+	display: block;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	max-height: 40px;
@@ -82,4 +83,16 @@ div.views {
 	font-size: 16px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 500;
+	vertical-align: middle;
+	line-height: 1.1;
+}
+
+.logoutBox span {
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center; 
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
 }

@@ -1,19 +1,19 @@
-<div class="jumbotron text-center"
-	style="width: 100%; padding-top: 5px; padding-bottom: 5px; padding-right: 5px">
+<div class="jumbotron text-center getClientInfo">
 	<table border="true" style="width: 100%;">
 		<th colspan="2" style="text-align: center;">Client -
-			{{ClientInfo.client_id}}</th>
-		<tr class="heading">
+			{{ClientInfo.client_id}} &nbsp; &nbsp; <a href='#updateClient/{{ClientInfo.client_id}}'><img src="img/edit.png"></img></a></th>
+		<tr class="heading" ng-show="provisions">
 			<th style="text-align: center; width: 30%">Provider ID</th>
 			<th style="text-align: center; width: 70%">Capability ID</th>
 		</tr>
-		<tr ng-repeat="provision in provisions">
+		<tr ng-repeat="provision in provisions" ng-show="provisions">
 			<td>{{provision.key}}</td>
 			<td style="word-wrap: break-word;">{{provision.value}}</td>
 		</tr>
 	</table>
+	<div ng-hide="provisions">No Providers found for {{ClientInfo.client_id}}.</div>
 	<div style="padding-top: 10px; width: 100%">
-		<table border="true" style="width: 100%">
+		<table border="true" style="width: 100%" ng-show="ipRange">
 			<th colspan="3" style="text-align: center;">IP Ranges</th>
 			<tr class="heading">
 				<th style="text-align: center; width: 33%">Name</th>
@@ -28,5 +28,6 @@
 			</tr>
 
 		</table>
+		<div ng-hide="ipRange">No IP Ranges set for the {{ClientInfo.client_id}}.</div>
 	</div>
 </div>

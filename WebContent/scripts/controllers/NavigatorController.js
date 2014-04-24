@@ -4,6 +4,7 @@
 AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$rootScope) {
 		$scope.oneAtATime = true;
 		$rootScope.loginstatus = $cookies.loginCookie;
+		$scope.env = $cookies.env;
 
 		$scope.clientOptions = [ {
 			name : "Manage Client",

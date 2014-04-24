@@ -27,9 +27,9 @@
 <!-- 			</tr> -->
 			
 			<tr ng-repeat="capability in capabilities">
-				<td style="border-right: 0">{{capability.name}}</td>
-				<td style="padding: 0; border: 0">
-					<table border="1" style="width: 100%">
+				<td>{{capability.name}}</td>
+				<td style="padding: 0;">
+					<table style="width: 100%">
 						<tr ng-repeat="route in capability.routes" style="text-align: left;">
 							<td style="white-space: nowrap;">
 								<span class="method {{route.methods[0]}}">{{route.methods[0]}}</span> {{route.path}}

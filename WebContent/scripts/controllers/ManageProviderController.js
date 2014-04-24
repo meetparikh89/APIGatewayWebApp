@@ -17,7 +17,6 @@ AdminUtilityApp.controller('ManageProviderController',
 		    });
 			console.log("End of getProviders");
 		}
-		//$scope.getProviders();
 		
 		$scope.listProviderTable = new ngTableParams({
 	        page: 1,            // show first page
@@ -32,5 +31,24 @@ AdminUtilityApp.controller('ManageProviderController',
                 $defer.resolve($scope.providers);
 	        }
 	    });
+
+	    $scope.deleteProvider = function(providername){
+	    	var confirmation = window.confirm("Are you sure you want to delete this provider.\nCaution : This cannot be undone.");
+	    	if (confirmation == true) {
+	    		$http({
+	    			method: 'DELETE',
+	    			url : 'admin/provider/' + providername
+	    		})
+	    		.success(function(data){
+	    			$scope.provider_message = "Provider " + providername + " deleted.";
+					$scope.listProviderTable.reload();
+	    		})
+	    		.error(function(data){
+	    			$scope.provider_message = data.error_description;
+	    		});
+	    	} else {
+	    		$scope.provider_message = "";
+	    	}						
+	    }
 	}
 );

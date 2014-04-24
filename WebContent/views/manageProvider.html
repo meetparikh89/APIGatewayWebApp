@@ -10,8 +10,9 @@
                     <td>{{$index+1}}</td>
                     <td style="text-align: left; padding-left: 10px"> {{provider.id}}</td>
                     <td><img src="img/edit.png" title="Edit"></img></td>
-					<td><img src="img/delete.png" title="Delete"></td>
+					<td><img src="img/delete.png" title="Delete" ng-click="deleteProvider(provider.id)" style="cursor:pointer"> </img></td>
                 </tr>
             </table>
 	</div>
+    <div ng-bind="provider_message" class="errorMessage"></div>
 </div>

@@ -68,6 +68,7 @@ div.views {
 	padding-bottom: 5px; 
 	padding-right: 5px;
 	font-size: small !important ;
+	overflow: scroll;
 }
 
 .logoutBox{

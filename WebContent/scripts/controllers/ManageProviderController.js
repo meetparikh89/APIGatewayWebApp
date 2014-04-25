@@ -16,7 +16,7 @@ AdminUtilityApp.controller('ManageProviderController',
 		    	console.log('error');
 		    });
 			console.log("End of getProviders");
-		}
+		};
 		
 		$scope.listProviderTable = new ngTableParams({
 	        page: 1,            // show first page
@@ -49,6 +49,6 @@ AdminUtilityApp.controller('ManageProviderController',
 	    	} else {
 	    		$scope.provider_message = "";
 	    	}						
-	    }
+	    };
 	}
 );

@@ -29,13 +29,15 @@
 <script type="text/javascript"
 	src="scripts/factories/ConfirmationDataFactory.js"></script>
 <script type="text/javascript" src="scripts/libs/ng-table.js"></script>
-<script type="text/javascript"
-	src="scripts/controllers/ManageProviderController.js"></script>
+<script type="text/javascript" src="scripts/libs/autocomplete.js"></script>
+<script type="text/javascript" src="scripts/controllers/ManageProviderController.js"></script>
 <script type="text/javascript" src="scripts/controllers/CreateProviderController.js"></script>
 <script type="text/javascript" src="scripts/controllers/ProviderDetailsController.js"></script>
+<script type="text/javascript" src="scripts/controllers/ProvisioningClient.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/autocomplete.css" />
 
 </head>
 <body>
@@ -64,6 +66,12 @@
 					<accordion-group heading="Providers" is-open="false">
 						<p ng-repeat="option in providerOptions">
 						<a href={{option.hrefValue}}>{{option.name}}</a>
+						</p>
+					</accordion-group>
+
+					 <accordion-group heading="Provisioning" is-open="false">
+						<p ng-repeat="provision in provisioningOptions">
+						<a href={{provision.hrefValue}}>{{provision.name}}</a>
 						</p>
 					</accordion-group> 
 					

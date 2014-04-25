@@ -22,6 +22,13 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 			hrefValue:"#createProvider"
 		} ];
 		
+		$scope.provisioningOptions = [ {
+			name : "Provision",
+			hrefValue:"#provisioning"
+		}, {
+			name : "Deprovision",
+			hrefValue:"#deprovisioning"
+		} ];
 		
 		$scope.capabilityOptions= [ {
 			name : "Get Cabalities",

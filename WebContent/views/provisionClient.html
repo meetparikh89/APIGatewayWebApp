@@ -8,5 +8,23 @@
 			<td>Provider Name : </td>
 			<td><autocomplete ng-model="providerName" data="providerNames" on-type="updateProvider" attr-placeholder="type provider name..."></autocomplete></td>
 		</tr>
+		<tr>
+			<td>Capability Name : </td>
+			<td><autocomplete ng-click="fetchCapabilityList()" ng-model="capabilityName" data="capabilityNames" on-type="updateCapability" attr-placeholder="type capability name..."></autocomplete></td>
+		</tr>
+	</table>
+	<button class="btn-primary" ng-click="addToTable()" style="margin: 5px;">Add</button>
+	<div style="color: red; margin: 5px;" ng-bind="add_error"></div>
+	<table ng-table="selectedCapabilitiesTable" border="1" style="padding: 5px;">
+		<tr>
+			<th>Client Name</th>
+			<th>Provider Name</th>
+			<th>Capability Name</th>
+		</tr>
+		<tr ng-repeat="provision in provisionNames">
+			<td ng-bind="provision.client"></td>
+			<td ng-bind="provision.provider"></td>
+			<td ng-bind="provision.capability"></td>
+		</tr>
 	</table>
 </div>

@@ -1,5 +1,5 @@
-AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http',
-		function($scope, $http) {
+AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTableParams',
+		function($scope, $http,ngTableParams) {
 
 			$scope.fetchClientList = function() {
 				$http({
@@ -36,9 +36,35 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http',
 					$scope.allproviderNames = "";
 				});
 			};
+			
+			$scope.fetchCapabilityList = function() {
+				if(!($scope.providerName == null || $scope.providerName === undefined || $scope.providerName.trim() == '')){
+					if($scope.capabilityName == null || $scope.capabilityName === undefined || $scope.capabilityName.trim() == ''){
+						$http({
+							method : 'GET',
+							url : 'admin/provider/' + $scope.providerName,
+						}).success(function(data) {
+							console.log(data.capabilities);
+							var result = new Array();
+							for (var i = 0; i < data.capabilities.length; i++) {
+								var obj = data.capabilities[i];
+								result[i] = obj.name;
+							}
+							console.log(result);
+							$scope.allCapabilityNames = result;
+						}).error(function(data) {
+							console.log(data);
+							$scope.allCapabilityNames = "";
+						});
+					}
+				}
+			};
 
+			
 			$scope.fetchClientList();
 			$scope.fetchProviderList();
+			//$scope.fetchCapabilityList();
+			$scope.provisionNames = [];
 
 			$scope.updateClient = function(typed) {
 				$scope.clientNames = $scope.allclientNames;
@@ -47,5 +73,37 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http',
 			$scope.updateProvider = function(typed){
 				$scope.providerNames = $scope.allproviderNames;
 			};
+			
+			$scope.updateCapability = function(typed){
+				$scope.capabilityNames = $scope.allCapabilityNames;
+			};
+			
+			$scope.addToTable = function(){
+				$scope.add_error = "";
+				if(($scope.allCapabilityNames.indexOf($scope.capabilityName) != -1) && ($scope.allclientNames.indexOf($scope.clientName)!= -1) && ($scope.allproviderNames.indexOf($scope.providerName)!= -1)){
+					var selectedProvision = {};
+					selectedProvision['client'] = $scope.clientName;
+					selectedProvision['provider'] = $scope.providerName;
+					selectedProvision['capability'] = $scope.capabilityName;
+					if($scope.provisionNames.indexOf(selectedProvision) == -1){
+						$scope.provisionNames.push(selectedProvision);
+					} else {
+						$scope.add_error = "Already added to review.";
+					}
+				} else {
+					$scope.add_error = "Please add valid data.";
+				}
+			};
+			
+			$scope.selectedCapabilitiesTable = new ngTableParams({
+		        page: 1,            // show first page
+		        count: 1,          // count per page
+		        sorting: {
+		            name: 'asc'     // initial sorting
+		        }
+		    }, {
+		        total: 0,           // length of data
+		        getData: $scope.provisionNames
+		    });
 
 		} ]);

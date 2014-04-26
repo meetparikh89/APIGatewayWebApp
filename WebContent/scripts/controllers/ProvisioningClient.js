@@ -63,7 +63,7 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 			
 			$scope.fetchClientList();
 			$scope.fetchProviderList();
-			//$scope.fetchCapabilityList();
+//			$scope.fetchCapabilityList();
 //			$scope.provisionNames = [];
 			$scope.provisionNamesJSONObject = {};
 

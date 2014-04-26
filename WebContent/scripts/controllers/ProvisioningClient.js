@@ -63,8 +63,6 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 			
 			$scope.fetchClientList();
 			$scope.fetchProviderList();
-//			$scope.fetchCapabilityList();
-//			$scope.provisionNames = [];
 			$scope.provisionNamesJSONObject = {};
 
 			$scope.updateClient = function(typed) {
@@ -81,6 +79,7 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 			
 			$scope.addToTable = function(){
 				$scope.add_error = "";
+				$scope.submit_error = "";
 				if(($scope.allCapabilityNames.indexOf($scope.capabilityName) != -1) && ($scope.allclientNames.indexOf($scope.clientName)!= -1) && ($scope.allproviderNames.indexOf($scope.providerName)!= -1)){
 					var selectedProvision = {};
 					selectedProvision['client'] = $scope.clientName;
@@ -88,7 +87,6 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 					selectedProvision['capability'] = $scope.capabilityName;
 					var selectedProvisionBase64 = CryptoJS.MD5(JSON.stringify(selectedProvision));				
 					if($scope.provisionNamesJSONObject[selectedProvisionBase64] === undefined || $scope.provisionNamesJSONObject[selectedProvisionBase64] == null){
-//						$scope.provisionNames.push(selectedProvision);
 						$scope.provisionNamesJSONObject[selectedProvisionBase64] = selectedProvision;
 					} else {
 						$scope.add_error = "Already added to review.";
@@ -106,18 +104,21 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 		        }
 		    }, {
 		        total: 0,           // length of data
-//		        getData: $scope.provisionNames
 		        getData: $scope.provisionNamesJSONObject
-//		        getData : function(){
-//		        	console.log("Get Data called.");
-//		        	var json = JSON.parse($scope.provisionNamesJSONObject);
-//		        	console.log(json);
-//		        	for(var i = 0 ; i < json.length; i++){
-//		        		$scope.provisionNames.push(json[i]);
-//		        	}
-//		        	console.log($scope.provisionNames);
-//		        	return $scope.provisionNames;
-//		        }
 		    });
+			
+			$scope.deleteProvision = function(provision){
+				delete $scope.provisionNamesJSONObject[CryptoJS.MD5(JSON.stringify(provision))];
+			};
+			
+			$scope.submitProvisions = function(){
+				$scope.add_error = "";
+				$scope.submit_error = "";
+				if(Object.keys($scope.provisionNamesJSONObject).length < 1) {
+					$scope.submit_error = "Please add some capabilities first.";
+				} else {
+					$scope.submitClicked = true;
+				}
+			};
 
 		} ]);

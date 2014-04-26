@@ -64,7 +64,8 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 			$scope.fetchClientList();
 			$scope.fetchProviderList();
 			//$scope.fetchCapabilityList();
-			$scope.provisionNames = [];
+//			$scope.provisionNames = [];
+			$scope.provisionNamesJSONObject = {};
 
 			$scope.updateClient = function(typed) {
 				$scope.clientNames = $scope.allclientNames;
@@ -85,8 +86,10 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 					selectedProvision['client'] = $scope.clientName;
 					selectedProvision['provider'] = $scope.providerName;
 					selectedProvision['capability'] = $scope.capabilityName;
-					if($scope.provisionNames.indexOf(selectedProvision) == -1){
-						$scope.provisionNames.push(selectedProvision);
+					var selectedProvisionBase64 = CryptoJS.MD5(JSON.stringify(selectedProvision));				
+					if($scope.provisionNamesJSONObject[selectedProvisionBase64] === undefined || $scope.provisionNamesJSONObject[selectedProvisionBase64] == null){
+//						$scope.provisionNames.push(selectedProvision);
+						$scope.provisionNamesJSONObject[selectedProvisionBase64] = selectedProvision;
 					} else {
 						$scope.add_error = "Already added to review.";
 					}
@@ -103,7 +106,18 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 		        }
 		    }, {
 		        total: 0,           // length of data
-		        getData: $scope.provisionNames
+//		        getData: $scope.provisionNames
+		        getData: $scope.provisionNamesJSONObject
+//		        getData : function(){
+//		        	console.log("Get Data called.");
+//		        	var json = JSON.parse($scope.provisionNamesJSONObject);
+//		        	console.log(json);
+//		        	for(var i = 0 ; i < json.length; i++){
+//		        		$scope.provisionNames.push(json[i]);
+//		        	}
+//		        	console.log($scope.provisionNames);
+//		        	return $scope.provisionNames;
+//		        }
 		    });
 
 		} ]);

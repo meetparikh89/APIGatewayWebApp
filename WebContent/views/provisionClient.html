@@ -1,15 +1,15 @@
 <div class="jumbotron text-center">
 	<table style="text-align: left;">
 		<tr>
-			<td>Client Name : </td>
+			<td>Client Name : <span style="color: red;">*</span></td>
 			<td><autocomplete ng-model="clientName" data="clientNames" on-type="updateClient" attr-placeholder="type client name..."></autocomplete></td>
 		</tr>
 		<tr>
-			<td>Provider Name : </td>
+			<td>Provider Name : <span style="color: red;">*</span></td>
 			<td><autocomplete ng-model="providerName" data="providerNames" on-type="updateProvider" attr-placeholder="type provider name..."></autocomplete></td>
 		</tr>
 		<tr>
-			<td>Capability Name : </td>
+			<td>Capability Name : <span style="color: red;">*</span></td>
 			<td><autocomplete ng-click="fetchCapabilityList()" ng-model="capabilityName" data="capabilityNames" on-type="updateCapability" attr-placeholder="type capability name..."></autocomplete></td>
 		</tr>
 	</table>

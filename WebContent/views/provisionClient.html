@@ -1,0 +1,40 @@
+<div class="jumbotron text-center">
+	<table style="text-align: left;">
+		<tr>
+			<td>Client Name : <span style="color: red;">*</span></td>
+			<td><autocomplete ng-model="clientName" data="clientNames" on-type="updateClient" attr-placeholder="type client name..."></autocomplete></td>
+		</tr>
+		<tr>
+			<td>Provider Name : <span style="color: red;">*</span></td>
+			<td><autocomplete ng-model="providerName" data="providerNames" on-type="updateProvider" attr-placeholder="type provider name..."></autocomplete></td>
+		</tr>
+		<tr>
+			<td>Capability Name : <span style="color: red;">*</span></td>
+			<td><autocomplete ng-click="fetchCapabilityList()" ng-model="capabilityName" data="capabilityNames" on-type="updateCapability" attr-placeholder="type capability name..."></autocomplete></td>
+		</tr>
+	</table>
+	<div style="text-align: left;">
+		<button class="btn-primary" ng-click="addToTable()" style="margin: 5px;">Add</button>
+		<div style="color: red; margin: 5px;" ng-bind="add_error"></div>
+	</div>
+	<table ng-table="selectedCapabilitiesTable" border="1" style="padding: 100px; margin: 10px;">
+		<tr>
+			<th style="padding: 10px;">Client Name</th>
+			<th style="padding: 10px;">Provider Name</th>
+			<th style="padding: 10px;">Capability Name</th>
+			<th ng-hide="submitClicked" style="padding: 10px;">Remove</th>
+			<th ng-show="submitClicked" style="padding: 10px;">Status</th>
+		</tr>
+		<tr ng-repeat="provision in provisionNamesJSONObject">
+			<td style="padding: 10px;" ng-bind="provision.client"></td>
+			<td style="padding: 10px;" ng-bind="provision.provider"></td>
+			<td style="padding: 10px;" ng-bind="provision.capability"></td>
+			<td style="padding: 10px;" ng-hide="submitClicked"><img src="img/delete.png" ng-click="deleteProvision(provision)" style="cursor: pointer;"></img></td>
+			<td style="padding: 10px;" ng-show="submitClicked" class="method POST">Please Wait</td>
+		</tr>
+	</table>
+	<div style="text-align: left;">
+		<button class="btn-primary" ng-click="submitProvisions()" style="margin: 5px;">Submit</button>
+		<div style="color: red; margin: 5px;" ng-bind="submit_error"></div>
+	</div>
+</div>

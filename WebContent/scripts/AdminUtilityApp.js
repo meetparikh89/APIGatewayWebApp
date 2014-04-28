@@ -1,4 +1,4 @@
-var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap','ngCookies','ngTable'])
+var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap','ngCookies','ngTable','autocomplete'])
 
 .config(['$routeProvider',
         function($routeProvider) {
@@ -50,6 +50,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     .when('/updateProvider/:provider',{
                     	controller : "CreateProviderController",
                     	templateUrl: 'views/createProvider.html'
+                    })
+                    .when('/provisioning',{
+                        controller : "ProvisioningClient",
+                        templateUrl: "views/provisionClient.html"
                     })
                     .otherwise({
                         redirectTo: '/'

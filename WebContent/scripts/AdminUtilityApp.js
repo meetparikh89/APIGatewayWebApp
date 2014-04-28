@@ -47,6 +47,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     	controller : "ProviderDetailsController",
                     	templateUrl: 'views/providerDetails.html'
                     })
+                    .when('/updateProvider/:provider',{
+                    	controller : "CreateProviderController",
+                    	templateUrl: 'views/createProvider.html'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });

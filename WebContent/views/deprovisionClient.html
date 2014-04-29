@@ -1,0 +1,19 @@
+<div class="jumbotron">
+	<div>
+		Client Id : <autocomplete style="width:80px;" ng-model="clientName" data="clientNames" on-type="updateClient" attr-placeholder="type client name..."></autocomplete>
+		<button class="btn-primary" ng-click="getCapabilities()" style="margin: 5px;">Fetch</button> <br/>
+		<div ng-bind="clientSearchError"></div>
+	</div>
+	<table ng-show="provisions" style="text-align: left; padding: 10px;" border="1" ng-table="provisionDetailTable">
+		<tr>
+			<th>Provider</th>
+			<th>Capability</th>
+			<th>Remove</th>
+		</tr>
+		<tr ng-repeat="provision in provisions">
+			<td ng-bind="provision.provision_key.provider_id"></td>
+			<td ng-bind="provision.provision_key.capability_id"></td>
+			<td><img ng-click="deprovision(provision.provision_key.provider_id,provision.provision_key.capability_id)" alt="Delete" src="img/delete.png" style="cursor:pointer" title="Delete"></td>
+		</tr>
+	</table>
+</div>

@@ -11,7 +11,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AuthFilter implements Filter{
+import org.apache.log4j.Logger;
+
+public class AuthFilter implements Filter {
+
+	private Logger log = Logger.getLogger(AuthFilter.class);
 
 	@Override
 	public void destroy() {
@@ -22,17 +26,21 @@ public class AuthFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filterChain) throws IOException, ServletException {
+
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		System.out.println(httpServletRequest.getServletPath());
-		
-		if(httpServletRequest.getServletPath().equals("/views/login.html")){
+
+		log.debug(httpServletRequest.getServletPath());
+
+		if (httpServletRequest.getServletPath().equals("/views/login.html")) {
+			log.debug("Going to the login page.");
 			filterChain.doFilter(request, response);
-		} else if(httpServletRequest.getSession().getAttribute("token") == null || httpServletRequest.getSession().getAttribute("baseUrl") == null){
-			System.out.println("Redirecting as no valid session found.");
+		} else if (httpServletRequest.getSession().getAttribute("token") == null
+				|| httpServletRequest.getSession().getAttribute("baseUrl") == null) {
+			log.debug("Redirecting as no valid session found.");
 			httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 		} else {
-			System.out.println("Successfully Authenticated user.");
+			log.debug("Successfully Authenticated user.");
 			filterChain.doFilter(request, response);
 		}
 	}

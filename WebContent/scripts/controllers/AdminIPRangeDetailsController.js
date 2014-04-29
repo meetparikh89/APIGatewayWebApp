@@ -30,20 +30,20 @@ AdminUtilityApp.controller('AdminIPRangeDetailsController',
 	        }
 	    });
 
-	    $scope.deleteAdmin = function(adminName){
-	    	var confirmation = window.confirm("Are you sure you want to delete this admin.\nCaution : This cannot be undone.");
+	    $scope.deleteIPRange = function(name){
+	    	var confirmation = window.confirm("Are you sure you want to delete this Range.\nCaution : This cannot be undone.");
 	    	if (confirmation == true) {
 	    		$http({
-	    			method: 'DELETE',
-	    			url : 'admin/admin/' + adminName
-	    		})
-	    		.success(function(data){
-	    			$scope.admin_message = "Admin " + adminName + " deleted.";
-					$scope.listAdminTable.reload();
-	    		})
-	    		.error(function(data){
-	    			$scope.admin_message = data.error_description;
-	    		});
+					method: 'DELETE',
+					url : 'admin/alladmins/iprange/' + name,
+				})
+				.success(function(data){
+					console.log("removed successfully");
+					$scope.listRangeTable.reload();
+				})
+				.error(function(data){
+					console.log("Error occurred.");
+				});
 	    	} else {
 	    		$scope.admin_message = "";
 	    	}						

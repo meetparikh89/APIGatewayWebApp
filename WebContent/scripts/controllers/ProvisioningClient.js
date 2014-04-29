@@ -118,7 +118,33 @@ AdminUtilityApp.controller('ProvisioningClient', [ '$scope', '$http','ngTablePar
 					$scope.submit_error = "Please add some capabilities first.";
 				} else {
 					$scope.submitClicked = true;
+					for(provision in $scope.provisionNamesJSONObject){
+						$scope.submitProvisionsWorker(provision);
+					}
 				}
 			};
+			
+			$scope.submitProvisionsWorker = function(provision){
+				console.log($scope.provisionNamesJSONObject[provision]);
+				$http({
+					method : 'PUT',
+					url : 'admin/client/' + $scope.provisionNamesJSONObject[provision].client + "/provider/" + $scope.provisionNamesJSONObject[provision].provider + "/capability/" + $scope.provisionNamesJSONObject[provision].capability
+				})
+				.success(function(data){
+					console.log(data);
+					$scope.provisionNamesJSONObject[provision].status = "Success";
+					$scope.provisionNamesJSONObject[provision].colour = "GET";
+				})
+				.error(function(data){
+					console.log(data);
+					$scope.provisionNamesJSONObject[provision].status = "Error";
+					$scope.provisionNamesJSONObject[provision].error = data.error_description;
+					$scope.provisionNamesJSONObject[provision].colour = "DELETE";
+				});
+			};
 
+			$scope.backButton = function(){
+				window.history.back();
+			};
+			
 		} ]);

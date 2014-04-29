@@ -28,7 +28,9 @@ module.exports = function(config) {
       '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/controllers/AdminLoginController.js',
       '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/tests/AdminLoginControllerTest.js',
       '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/controllers/ManageClientController.js',
-      '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/tests/ManageClientControllerTest.js'
+      '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/tests/ManageClientControllerTest.js',
+      '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/controllers/CreateProviderController.js',
+      '/home/cts1/workspaces/Utility/APIGatewayWebApp/WebContent/scripts/tests/CreateProviderControllerTest.js'
     ],
 
 

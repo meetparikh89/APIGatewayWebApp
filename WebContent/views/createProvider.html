@@ -2,7 +2,7 @@
 	<table style="text-align: left;">
 		<tr>
 			<td> Provider Name : <span style="color: red;">*</span></td>
-			<td> <input type="text" ng-model="providerName"/> </td>
+			<td> <input type="text" ng-model="providerName" ng-disabled="isUpdate"/> </td>
 		</tr>
 		<tr>
 			<td> Base Url : <span style="color: red;">*</span></td>
@@ -13,7 +13,7 @@
 			<td> <textarea rows="5" cols="30" ng-model="providerCertificate" ></textarea></td>
 		</tr>
 		<tr>
-			<td collspan="2"><button class="btn-primary" ng-click="createProvider()">Create</button></td>
+			<td collspan="2"><button class="btn-primary" ng-click="saveProvider()">Save</button></td>
 		</tr>
 	</table>
 	<div ng-bind="createProvider_message" class="errorMessage"></div>

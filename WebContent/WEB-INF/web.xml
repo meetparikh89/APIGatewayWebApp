@@ -16,6 +16,10 @@
 		<param-name>propertiesfile</param-name>
 		<param-value>/WEB-INF/config.properties</param-value>
 	</context-param>
+	<context-param>
+		<param-name>log4j-config</param-name>
+		<param-value>WEB-INF/log4j.xml</param-value>
+	</context-param>
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
@@ -48,4 +52,9 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
+
+	<listener>
+		<listener-class>com.apigateway.adminutility.listener.AdminUtilityContextListener</listener-class>
+	</listener>
+
 </web-app>

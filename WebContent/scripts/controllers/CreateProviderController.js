@@ -1,4 +1,22 @@
-AdminUtilityApp.controller('CreateProviderController', ['$scope','$http','$location', function($scope,$http,$location){
+AdminUtilityApp.controller('CreateProviderController', ['$scope','$http','$location','$routeParams', function($scope,$http,$location,$routeParams){
+	
+	var provider = $routeParams.provider;
+	console.log(provider);
+	$scope.isUpdate = false;
+	
+	if(provider != null && provider != undefined && provider != '') {
+		$scope.isUpdate = true;
+		$http({
+			method  : 'GET',
+            url     : 'admin/provider/'+provider,
+		}).success(function(data) {
+			$scope.providerName = provider;
+			$scope.providerBaseUrl = data.base_uri;
+			$scope.providerCertificate = data.certificate;
+		});
+		
+	}
+	
 	
 	function validateInput(){
 		if($scope.providerName == null || $scope.providerName === undefined || $scope.providerName.trim() == '' ){
@@ -25,21 +43,36 @@ AdminUtilityApp.controller('CreateProviderController', ['$scope','$http','$locat
 		return bodyData;
 	}
 
-	$scope.createProvider = function() {
+	$scope.saveProvider = function() {
 		if(validateInput()){
 			var bodyData = generateDataObject();
 			console.log(bodyData);
-			$http({
-				method: 'PUT',
-				url : 'admin/provider/' + $scope.providerName,
-				data : bodyData
-			})
-			.success(function(data){
-				$scope.createProvider_message = 'Successfully created provider';
-			})
-			.error(function(data){
+			if($scope.isUpdate) {
+				$http({
+					method: 'POST',
+					url : 'admin/provider/' + $scope.providerName,
+					data : bodyData
+				})
+				.success(function(data){
+					$scope.createProvider_message = 'Provider updated successfully.';
+				})
+				.error(function(data){
+					$scope.createProvider_message = data.error_description;
+				});
+			} else {
+				$http({
+					method: 'PUT',
+					url : 'admin/provider/' + $scope.providerName,
+					data : bodyData
+				})
+				.success(function(data){
+					console.log(JSON.stringify(data));
+					$scope.createProvider_message = 'Provider created successfully';
+				})
+				.error(function(data){
 				$scope.createProvider_message = data.error_description;
-			});
+				});
+			}
 		}
-	}
+	};
 }]);

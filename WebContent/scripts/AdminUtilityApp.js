@@ -55,6 +55,10 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                         controller : "ProvisioningClient",
                         templateUrl: "views/provisionClient.html"
                     })
+                    .when('/deprovisioning',{
+                        controller : "DeprovisioningClient",
+                        templateUrl: "views/deprovisionClient.html"
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });

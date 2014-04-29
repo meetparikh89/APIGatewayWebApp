@@ -35,6 +35,7 @@
 <script type="text/javascript" src="scripts/controllers/CreateProviderController.js"></script>
 <script type="text/javascript" src="scripts/controllers/ProviderDetailsController.js"></script>
 <script type="text/javascript" src="scripts/controllers/ProvisioningClient.js"></script>
+<script type="text/javascript" src="scripts/controllers/DeProvisioningClient.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -76,11 +77,6 @@
 						</p>
 					</accordion-group> 
 					
-					<accordion-group heading="Capabilities" is-open="false">
-						<p ng-repeat="option in capabilityOptions">
-						<a href={{option.hrefValue}}>{{option.name}}</a>
-						</p>
-					</accordion-group> 
 				</accordion>
 			</div>
 		</div>

@@ -37,4 +37,18 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 			name : "Create Prioritries",
 			hrefValue:"#createCapabilities"
 		} ];
+		
+		$scope.adminSettings= [ {
+			name : "Manage Admin",
+			hrefValue:"#manageAdmin"
+		}, {
+			name : "Create Admin",
+			hrefValue:"#createAdmin"
+		}, {
+			name : "Get IP Range",
+			hrefValue:"#getAdminIpRange"
+		}, {
+			name : "Edit IP Range",
+			hrefValue:"#editAdminIpRange"
+		}];
 });

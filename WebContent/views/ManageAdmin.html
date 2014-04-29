@@ -1,0 +1,20 @@
+<div class="jumbotron text-center" style="width: 100%">
+    <div style="width: 100%">
+    	<h3><u>Admin</u></h3>
+        <input type="search" ng-model="searchAdmin" />
+        <div ng-bind="admin_message" class="errorMessage"></div>
+        <br />
+    	<table ng-table="listAdminTable" border="true" style="width: 100%">
+                <tr>
+                    <th style="text-align: left;" width="50px">Sr.</th>
+                    <th style="text-align: left; padding-left: 10px" colspan="3">Admin</th>
+                </tr>
+                <tr ng-repeat="admin in admins | filter : searchAdmin">
+                    <td>{{$index+1}}</td>
+                    <td style="text-align: left; padding-left: 10px" >{{admin.id}}</td>
+                    <td width="40px"><a href="#updateAdmin/{{admin.id}}"><img src="img/edit.png" title="Edit Admin"></img></a></td>
+					<td width="40px"><img src="img/delete.png" title="Delete Admin" ng-click="deleteAdmin(admin.id)" style="cursor:pointer"> </img></td>
+                </tr>
+            </table>
+	</div>
+</div>

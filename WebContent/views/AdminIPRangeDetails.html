@@ -1,0 +1,23 @@
+<div class="jumbotron text-center" style="width: 100%">
+    <div style="width: 100%">
+    	<h3><u>IP Range</u></h3>
+        <input type="search" ng-model="searchRange" />
+        <div ng-bind="adminiprange_message" class="errorMessage"></div>
+        <br />
+    	<table ng-table="listRangeTable" border="true" style="width: 100%">
+                <tr>
+                    <th style="text-align: left;" width="50px">Sr.</th>
+                    <th style="text-align: left; padding-left: 10px" >Name</th>
+                    <th style="text-align: left; padding-left: 10px" >From</th>
+                    <th style="text-align: left; padding-left: 10px" >To</th>
+                </tr>
+                <tr ng-repeat="range in ipRanges | filter : searchRange">
+                    <td>{{$index+1}}</td>
+                    <td style="text-align: left; padding-left: 10px" >{{range.name}}</td>
+                    <td style="text-align: left; padding-left: 10px" >{{range.from}}</td>
+                    <td style="text-align: left; padding-left: 10px" >{{range.to}}</td>
+					<td width="40px"><img src="img/delete.png" title="Delete IP Range" ng-click="deleteIPRange(range.name)" style="cursor:pointer"> </img></td>
+                </tr>
+            </table>
+	</div>
+</div>

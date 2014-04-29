@@ -55,6 +55,26 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                         controller : "ProvisioningClient",
                         templateUrl: "views/provisionClient.html"
                     })
+                    .when('/manageAdmin',{
+                        controller : "ManageAdminController",
+                        templateUrl: "views/ManageAdmin.html"
+                    })
+                    .when('/createAdmin',{
+                        controller : "CreateAdminController",
+                        templateUrl: "views/CreateAdmin.html"
+                    })
+                    .when('/updateAdmin/:admin',{
+                    	 controller : "CreateAdminController",
+                         templateUrl: "views/CreateAdmin.html"
+                    })
+                    .when('/getAdminIpRange',{
+                    	 controller : "AdminIPRangeDetailsController",
+                         templateUrl: "views/AdminIPRangeDetails.html"
+                    })
+                    .when('/editAdminIpRange',{
+                    	 controller : "AdminIPRangeEditorController",
+                         templateUrl: "views/AdminIPRangeEditor.html"
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });

@@ -1,0 +1,20 @@
+<div class="jumbotron text-center">
+	<table style="text-align: left;">
+		<tr>
+			<td> <span style="color: red;">*</span>Name : </td>
+			<td> <input type="text" ng-model="adminName" ng-disabled="isUpdate"/> </td>
+		</tr>
+		<tr>
+			<td> <span style="color: red;">*</span>Password : </td>
+			<td> <input type="password" ng-model="password"/> </td>
+		</tr>
+		<tr>
+			<td> <span style="color: red;">*</span>Confirm Password : </td>
+			<td> <input type="password" ng-model="confirmPassword"/> </td>
+		</tr>
+		<tr>
+			<td collspan="2"><button class="btn-primary" ng-click="saveAdmin()">Save</button></td>
+		</tr>
+	</table>
+	<div ng-bind="createAdmin_message" class="errorMessage"></div>
+</div>

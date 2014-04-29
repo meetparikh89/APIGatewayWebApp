@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+
+	<div style="width: 100%; text-align: right;" >
+		<input type="number" ng-model="rangeCount" style="width: 50px"/>
+		<button type="button" ng-model="add" ng-click="addRanges()">Add</button>
+		<button type="submit" ng-click="save()">Save</button>
+	</div>
+
+	<table>
+		<tr>
+			<th style="text-align: center; width: 40%" >Name</th>
+			<th style="text-align: center; width: 30%" >From</th>
+			<th style="text-align: center; width: 30%" >To</th>
+		</tr>
+		
+		<tr ng-repeat="range in ipRanges">
+			<td><input type="text" ng-model="range.name" style="text-align: center;" ng-disabled="isEditable(range)"/></td>
+			<td><input type="text" ng-model="range.from" style="text-align: center;"/></td>
+			<td><input type="text" ng-model="range.to" style="text-align: center;"/></td>
+			<td>
+				<img ng-model="imgRemove" src="img/delete.png" ng-click="removeRange(range)" title="Remove" /> 
+			</td>
+		</tr>
+		
+	</table>
+
+</div>

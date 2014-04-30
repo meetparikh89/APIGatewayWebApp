@@ -1,9 +1,11 @@
 <div class="jumbotron text-center">
 
-	<div style="width: 100%; text-align: right;" >
-		<input type="number" ng-model="rangeCount" style="width: 50px"/>
-		<button type="button" ng-model="add" ng-click="addRanges()">Add</button>
-		<button type="submit" ng-click="save()">Save</button>
+	<div style="width: 100%; text-align: right;"  >
+		<label style="font-size: medium; font-weight: normal;">No of IP ranges to add : </label>
+		<input type="number" ng-model="rangeCount" style="width: 50px"
+			onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 46 || event.keyCode == 8)'/>
+		<button style="font-size: medium; font-weight: normal;" type="button" ng-model="add" ng-click="addRanges()">Add</button>
+		<button style="font-size: medium; font-weight: normal;" type="submit" ng-click="save()">Save</button>
 	</div>
 
 	<table>

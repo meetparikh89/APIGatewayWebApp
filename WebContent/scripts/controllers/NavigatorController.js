@@ -30,14 +30,6 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 			hrefValue:"#deprovisioning"
 		} ];
 		
-		$scope.capabilityOptions= [ {
-			name : "Get Cabalities",
-			hrefValue:"#getCapabilities"
-		}, {
-			name : "Create Prioritries",
-			hrefValue:"#createCapabilities"
-		} ];
-		
 		$scope.adminSettings= [ {
 			name : "Manage Admin",
 			hrefValue:"#manageAdmin"

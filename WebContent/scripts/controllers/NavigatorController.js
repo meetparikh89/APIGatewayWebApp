@@ -40,7 +40,7 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 			name : "Get IP Range",
 			hrefValue:"#getAdminIpRange"
 		}, {
-			name : "Edit IP Range",
+			name : "Manage IP Range",
 			hrefValue:"#editAdminIpRange"
 		}];
 });

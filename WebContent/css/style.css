@@ -104,6 +104,12 @@ div.views {
 	text-align: left;
 }
 
+.successMessage {
+	color: green;
+	text-align: left;
+}
+
+
 .method{
 	text-transform: uppercase;
 	-webkit-border-radius: 3px;

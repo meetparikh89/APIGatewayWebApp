@@ -4,6 +4,9 @@ AdminUtilityApp.controller('CreateAdminController', ['$scope','$http','$location
 	console.log(admin);
 	$scope.isUpdate = false;
 	
+	$scope.createAdmin_message = '';
+	$scope.createAdmin_Sucmessage = '';
+	
 	if(admin != null && admin != undefined && admin != '') {
 		$scope.isUpdate = true;
 		$http({
@@ -58,10 +61,12 @@ AdminUtilityApp.controller('CreateAdminController', ['$scope','$http','$location
 					data : bodyData
 				})
 				.success(function(data){
-					$scope.createAdmin_message = 'Admin updated successfully.';
+					$scope.createAdmin_message = '';
+					$scope.createAdmin_Sucmessage = 'Admin updated successfully.';
 				})
 				.error(function(data){
 					$scope.createAdmin_message = data.error_description;
+					$scope.createAdmin_Sucmessage = '';
 				});
 			} else {
 				$http({
@@ -71,10 +76,12 @@ AdminUtilityApp.controller('CreateAdminController', ['$scope','$http','$location
 				})
 				.success(function(data){
 					console.log(JSON.stringify(data));
-					$scope.createAdmin_message = 'Admin created successfully';
+					$scope.createAdmin_message = '';
+					$scope.createAdmin_Sucmessage = 'Admin created successfully.';
 				})
 				.error(function(data){
 				$scope.createAdmin_message = data.error_description;
+				$scope.createAdmin_Sucmessage = '';
 				});
 			}
 		}

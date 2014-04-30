@@ -4,6 +4,7 @@ AdminUtilityApp.controller('AdminIPRangeEditorController',
 		var oldData = null; 
 		var removedRanges = null;
 		$scope.rangeCount = 1;
+		$scope.creationMessage = "";
 	
 		$scope.getRange = function(){
 			$http({
@@ -79,6 +80,7 @@ AdminUtilityApp.controller('AdminIPRangeEditorController',
 		
 		$scope.save = function() {
 			
+			var isError = false;
 			for (var itr = 0; itr < $scope.ipRanges.length; itr++) {
 				var range = $scope.ipRanges[itr];
 				var bodyData = generateDataObject(range);
@@ -92,6 +94,7 @@ AdminUtilityApp.controller('AdminIPRangeEditorController',
 						console.log("Added successfully");
 					})
 					.error(function(data){
+						isError = true;
 						console.log("Error occurred.");
 					});
 				} else {
@@ -106,6 +109,7 @@ AdminUtilityApp.controller('AdminIPRangeEditorController',
 							console.log("Updated successfully");
 						})
 						.error(function(data){
+							isError = true;
 							console.log("Error occurred.");
 						});
 					}
@@ -124,9 +128,14 @@ AdminUtilityApp.controller('AdminIPRangeEditorController',
 						console.log("removed successfully");
 					})
 					.error(function(data){
+						isError = true;
 						console.log("Error occurred.");
 					});
 				}				
+			}
+			
+			if(!isError) {
+				$scope.creationMessage = "IP Ranges saved successfully.";
 			}
 			
 		};

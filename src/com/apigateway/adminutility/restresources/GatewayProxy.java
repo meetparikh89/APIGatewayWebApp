@@ -29,8 +29,7 @@ public class GatewayProxy {
 	public Response getProxy(@Context HttpServletRequest request, @PathParam("targetResource") String targetResource){
 
 		Response apiGateWayResponse = new GatewayProxyHelper().sessionWorker(request, MethodTypes.GET, targetResource, null);
-		
-		log.info("getProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus());
+		log.info("getProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus() + ", apigw_transaction_id " + getAPIGatewayTransactionId(apiGateWayResponse));
 		return Response.status(apiGateWayResponse.getStatus())
 				.entity(apiGateWayResponse.readEntity(String.class))
 				.build();
@@ -43,7 +42,7 @@ public class GatewayProxy {
 
 		Response apiGateWayResponse = new GatewayProxyHelper().sessionWorker(request, MethodTypes.POST,targetResource,payload);
 
-		log.info("postProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus());
+		log.info("postProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus() + ", apigw_transaction_id " + getAPIGatewayTransactionId(apiGateWayResponse));
 		return Response.status(apiGateWayResponse.getStatus())
 				.entity(apiGateWayResponse.readEntity(String.class))
 				.build();
@@ -56,11 +55,12 @@ public class GatewayProxy {
 
 		Response apiGateWayResponse = new GatewayProxyHelper().sessionWorker(request,MethodTypes.PUT, targetResource, payload);
 
-		log.info("putProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus());
+		log.info("putProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus() + ", apigw_transaction_id " + getAPIGatewayTransactionId(apiGateWayResponse));
 		return Response.status(apiGateWayResponse.getStatus())
 				.entity(apiGateWayResponse.readEntity(String.class))
 				.build();
 	}
+
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
@@ -69,10 +69,14 @@ public class GatewayProxy {
 
 		Response apiGateWayResponse = new GatewayProxyHelper().sessionWorker(request,MethodTypes.DELETE, targetResource, payload);
 
-		log.info("deleteProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus());
+		log.info("deleteProxy - targetResourse: " + targetResource + ", Gateway response status: " + apiGateWayResponse.getStatus() + ", apigw_transaction_id " + getAPIGatewayTransactionId(apiGateWayResponse));
 		return Response.status(apiGateWayResponse.getStatus())
 				.entity(apiGateWayResponse.readEntity(String.class))
 				.build();
+	}
+	
+	private String getAPIGatewayTransactionId(Response apiGateWayResponse) {
+		return apiGateWayResponse.getHeaderString("apigw-transaction-id");
 	}
 	
 }

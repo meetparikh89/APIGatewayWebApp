@@ -1,13 +1,15 @@
 /* AUTOCOMPLETE */
 
 .autocomplete{
-  width: 100%;
+  width:300px;
+	font-size:14px;
+	height:35px;
   position: relative;
 }
 
 .autocomplete input{
-  font-size: 1.2em;
-  width: 100%;
+  font-size: 14px;
+  width: 300px;
   padding:0.4em;
 }
 
@@ -15,6 +17,7 @@
   position: absolute;
   left: 0;
   width: 100%;
+  font-size: 14px;
   border-left: 1px solid #888;
   border-right: 1px solid #888;
   border-bottom: 1px solid #888;
@@ -24,7 +27,8 @@
 .autocomplete li{
   text-align: left;
   list-style:none;
-  width: 100%;
+  width: 200px;
+font-size: 14px;
   padding:0.4em;
   background-color: #fff;
 }
@@ -32,10 +36,12 @@
 .autocomplete li.active{
   width: 100%;
   background-color: #4bf;
+
 }
 
 .autocomplete .highlight {
   background-color: #E2E2E2;
+ 
 }
 
 .autocomplete li.active .highlight {

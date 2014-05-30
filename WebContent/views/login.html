@@ -5,17 +5,17 @@
 		<tr>
 			<td><label>UserName:</label></td>
 			<td><input type="text" name="username" ng-model="admin.userName"
-				ng-minlength="3" ng-maxlength="8" required></td>
-			<td><span ng-show="loginform.username.$invalid">UserName
-					is mandatory and size should be between 3 & 8.</span></td>
+				ng-minlength="3" ng-maxlength="50" required></td>
+			<td style="width: 300px"><span ng-show="loginform.username.$invalid" >UserName
+					is mandatory and size should be between 3 & 50.</span></td>
 		</tr>
 
 		<tr>
 			<td><label>Password:</label></td>
 			<td><input type="password" name="password"
-				ng-model="admin.password" ng-minlength="3" ng-maxlength="8" required></td>
+				ng-model="admin.password" ng-minlength="3" ng-maxlength="50" required></td>
 			<td><span ng-show="loginform.password.$invalid">Password
-					is mandatory and size should be between 3 & 8. </span></td>
+					is mandatory and size should be between 3 & 50. </span></td>
 		</tr>
 
 		<tr>
@@ -23,7 +23,9 @@
 			<td><input type="radio" ng-model="admin.env" value="ref"
 				name="environment" ng-required="!loginform.admin.env"> REF <input
 				type="radio" ng-model="admin.env" value="live" name="environment"
-				ng-required="!loginform.admin.env">LIVE</td>
+				ng-required="!loginform.admin.env">LIVE <input
+				type="radio" ng-model="admin.env" value="dev" name="environment"
+				ng-required="!loginform.admin.env">Dev</td>
 			<td><span ng-show="loginform.environment.$invalid">Atleast
 					one environment should be selected.</span></td>
 		</tr>

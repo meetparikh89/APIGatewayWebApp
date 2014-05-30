@@ -29,7 +29,7 @@
 			<td style="padding: 10px;" ng-bind="provision.client"></td>
 			<td style="padding: 10px;" ng-bind="provision.provider"></td>
 			<td style="padding: 10px;" ng-bind="provision.capability"></td>
-			<td style="padding: 10px;" ng-hide="submitClicked"><img src="img/delete.png" ng-click="deleteProvision(provision)" style="cursor: pointer;"></img></td>
+			<td style="padding: 10px;" ng-hide="submitClicked"><img src="img/delete.png" ng-click="deleteProvision(provision)" style="cursor: pointer;"></img> </td>
 			<td style="padding: 10px;" ng-show="submitClicked" class="method {{provision.colour}}" ng-bind="provision.status" title="{{provision.error}}"></td>
 		</tr>
 	</table>

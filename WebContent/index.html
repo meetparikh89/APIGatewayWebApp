@@ -60,7 +60,7 @@
 			<div id="menu">
 				<div class="logoutBox">
 				<span style="vertical-align: middle;">Logged into {{env | uppercase}} <a href="loginservlet"><img
-						src="img/logout.png" style="padding: 5px"></img></a></span>	
+						src="img/logout.png" style="padding: 5px" title="Log Out"></img></a></span>	
 				</div>
 				<accordion close-others="true"> 
 					<accordion-group heading="Client" is-open="false">
@@ -88,8 +88,10 @@
 					</accordion-group> 
 				</accordion>
 			</div>
+			<div style="float: right;text-decoration: blink; " class="logoutBox">Welcome, {{user|uppercase}}</div>
 		</div>
 		<div ng-view class="views"></div>
+		
 	</div>
 </body>
 </html>

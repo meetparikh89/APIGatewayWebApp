@@ -1443,6 +1443,7 @@ th {
 
 .table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td
 	{
+	text-align:center;
 	padding: 8px;
 	line-height: 1.428571429;
 	vertical-align: top;
@@ -1450,6 +1451,7 @@ th {
 }
 
 .table>thead>tr>th {
+	text-align:center;
 	vertical-align: bottom;
 	border-bottom: 2px solid #ddd
 }
@@ -1600,19 +1602,34 @@ legend {
 label {
 	display: inline-block;
 	margin-bottom: 5px;
-	font-weight: bold
+	text-align: left;
+	
+
 }
 
-input[type="search"] {
+input[type="search"]{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box
+	box-sizing: border-box;
+	width:750px;
+	font-size:14px;
+	height:35px;
+}
+
+input[type="text"] ,input[type="password"]{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width:300px;
+	font-size:14px;
+	height:35px;
 }
 
 input[type="radio"],input[type="checkbox"] {
 	margin: 4px 0 0;
 	margin-top: 1px \9;
-	line-height: normal
+	line-height: normal;
+	font-weight: bold;
 }
 
 input[type="file"] {
@@ -2021,30 +2038,38 @@ textarea.input-lg {
 .btn-primary {
 	color: #fff;
 	background-color: #428bca;
-	border-color: #357ebd
+	border-color: #357ebd;
+	font-size:18px;
+	height:40px;
 }
 
 .btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
 	{
 	color: #fff;
 	background-color: #3276b1;
-	border-color: #285e8e
+	border-color: #285e8e;
+	font-size:18px;
+	height:40px;
 }
 
 .btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary
 	{
-	background-image: none
+	background-image: none;
+	height:40px;
+
 }
 
 .btn-primary.disabled,.btn-primary[disabled],fieldset[disabled] .btn-primary,.btn-primary.disabled:hover,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary:hover,.btn-primary.disabled:focus,.btn-primary[disabled]:focus,fieldset[disabled] .btn-primary:focus,.btn-primary.disabled:active,.btn-primary[disabled]:active,fieldset[disabled] .btn-primary:active,.btn-primary.disabled.active,.btn-primary[disabled].active,fieldset[disabled] .btn-primary.active
 	{
 	background-color: #428bca;
-	border-color: #357ebd
+	border-color: #357ebd;
+	height:35px;
 }
 
 .btn-primary .badge {
 	color: #428bca;
-	background-color: #fff
+	background-color: #fff;
+	height:35px;
 }
 
 .btn-warning {
@@ -4582,7 +4607,7 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 	font-weight: bold;
 	line-height: 1;
 	color: #fff;
-	text-align: center;
+	text-align: left;
 	white-space: nowrap;
 	vertical-align: baseline;
 	border-radius: .25em

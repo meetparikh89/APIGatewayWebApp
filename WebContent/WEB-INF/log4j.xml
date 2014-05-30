@@ -2,26 +2,47 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
-    debug="false">
-    <appender name="file" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="${catalina.home}/logs/adminUtility.log"/>
-        <param name="Append" value="true" />
-        <param name="ImmediateFlush" value="true" />
-        <param name="MaxFileSize" value="2MB" />
-        <param name="MaxBackupIndex" value="10" />
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c %x:%L - %m%n" />
-        </layout>
-    </appender>
-     
-    <logger name="com.apigateway" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="file"/>
-    </logger>
-     
-    <root>
-        <level value="DEBUG" />
-        <appender-ref ref="file" />
-    </root>
-     
+	debug="false">
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/adminUtility.log" />
+		<param name="Append" value="true" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="MaxFileSize" value="100MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c %x:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- <appender name="fileInfo" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/adminUtilityInfo.log" />
+		<param name="Append" value="true" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="MaxFileSize" value="1GB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c %x:%L - %m%n" />
+		</layout>
+	</appender> -->
+	
+	<logger name="com.apigateway" additivity="false">
+		<level value="DEBUG,INFO" />
+		<appender-ref ref="file" />
+	</logger>
+
+	<!-- <logger name="com.apigateway" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="fileInfo" />
+	</logger>
+ -->
+	<root>
+		<level value="DEBUG,INFO" />
+		<appender-ref ref="file" />
+	</root>
+	
+<!-- 	<root>
+		<level value="INFO" />
+		<appender-ref ref="fileInfo" />
+	</root>
+ -->
 </log4j:configuration>

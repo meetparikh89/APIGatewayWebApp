@@ -5,8 +5,8 @@ body,html {
 	color: white;
 	background: url('../img/o2background.png') repeat-x scroll 0px 0px
 		#449ED0;
-	font-family: Frutiger55, sans-serif;
-	font-size: 1rem;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
 	line-height: 1em;
 	clear: both;
 	display: block;
@@ -15,26 +15,40 @@ body,html {
 .getClientTable {
 	width: 100%;
 }
-
+/* 
+tr{
+	text-align:center;
+	padding-left:15px;
+	
+}
+label{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding-left:15px;
+}
 td {
 	padding: 5px;
 }
-
+*/
 #loginform {
 	color: white;
 	width: 500px;
 	margin: 0 auto;
 }
 
+#loginform span.loginspan{
+	width:500px;
+}
 #menu {
 	width: 300px;
 	padding: 0px 10px;
 	margin: 0px;
 	float: left;
 }
-
+ 
 div.views {
-	min-width: 800px;
+	min-width: 870px;
+	max-width:870px;
 	margin: 5px;
 	float: left;
 }

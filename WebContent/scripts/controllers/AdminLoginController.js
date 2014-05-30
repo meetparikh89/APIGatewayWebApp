@@ -13,6 +13,7 @@ AdminUtilityApp.controller('AdminLoginController',
         	.success(function(data){
         		$cookies.loginCookie = 'true';
                 $cookies.env = $scope.admin.env;
+                $cookies.user=$scope.admin.userName;
         		$rootScope.loginstatus = $cookies.loginCookie;
         		$location.path('/home');
         	})

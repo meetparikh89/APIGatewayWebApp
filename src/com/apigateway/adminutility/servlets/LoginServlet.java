@@ -57,12 +57,14 @@ public class LoginServlet extends HttpServlet {
 
 		String baseUrl = null;
 		log.debug("Get the base url for '" + env + "' environment");
-		if (env.equalsIgnoreCase("live")) {
+		/*if (env.equalsIgnoreCase("live")) {
 			baseUrl = properties.getProperty("live.environment.url");
 		} else {
 			baseUrl = properties.getProperty("ref.environment.url");
-		}
+		}*/
 
+		baseUrl = properties.getProperty(env + ".environment.url"); 
+				
 		log.info("Base url is - " + baseUrl);
 
 		GatewayProxyHelper gatewayProxyHelper = new GatewayProxyHelper();

@@ -1,6 +1,6 @@
 <div class="jumbotron text-center">
 
-	<div style="width: 100%; text-align: right;"  >
+	<div style="text-align: right;"  >
 		<label style="font-size: medium; font-weight: normal;">No. of rows to add : </label>
 		<input type="number" ng-model="rangeCount" style="width: 50px"
 			onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 46 || event.keyCode == 8)'/>
@@ -9,9 +9,9 @@
 
 	<table>
 		<tr>
-			<th style="text-align: center; width: 40%" >Name</th>
-			<th style="text-align: center; width: 30%" >From</th>
-			<th style="text-align: center; width: 30%" >To</th>
+			<th>Name</th>
+			<th>From</th>
+			<th>To</th>
 		</tr>
 		
 		<tr ng-repeat="range in ipRanges">

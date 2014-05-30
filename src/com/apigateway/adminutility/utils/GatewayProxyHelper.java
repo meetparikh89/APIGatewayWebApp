@@ -23,8 +23,10 @@ public class GatewayProxyHelper {
 	public boolean loginWorker(String token, String baseUrl) throws IOException{
 
 		log.debug("In GatewayProxyHelper#loginWorker");
+		String targetResource = "client";
 		Response response = worker(token, MethodTypes.GET, null,
-				getClient().target(baseUrl.concat("client/")));
+				getClient().target(baseUrl.concat(targetResource + "/")));
+		log.info("getProxy - targetResourse: " + targetResource + ", Gateway response status: " + response.getStatus() + ", apigw_transaction_id " + response.getHeaderString("apigw-transaction-id"));
 		return response.getStatus() == HttpServletResponse.SC_OK;
 	}
 

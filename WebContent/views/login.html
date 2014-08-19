@@ -1,48 +1,169 @@
-<form name="loginform" novalidate id="loginform">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+.formPanel {
+    background-color: #f0f0f0;
+    border-radius: 0 0 10px 10px;
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+.formPanel .panelContentWrap {
+    padding: 2em;
+}
 
-	<table>
+.formPanel h2 {
+    color: #005a95;
+    font-size: 1.462em;
+    margin: 0 0 1em;
+    padding: 0;
+    text-align: left;
+}
+.mobileview {
+    display: none;
+}
+.mobileview {
+    display: none;
+}
+label {
+    color: #444;
+    font-size: 1em;
+    margin: 1em 0 0;
+}
+.formPanel input {
+    width: 95%;
+}
+input:required {
+    border-radius: 4px;
+}
+fieldset {
+    margin: 1em 0 0;
+    padding: 0;
+    width: 100%;
+}
+fieldset.rememberMe {
+    margin: 1em 0;
+    text-align: left;
+}
 
-		<tr>
-			<td><label>UserName:</label></td>
-			<td><input type="text" name="username" ng-model="admin.userName"
-				ng-minlength="3" ng-maxlength="50" required></td>
-			<td style="width: 300px"><span ng-show="loginform.username.$invalid" >UserName
-					is mandatory and size should be between 3 & 50.</span></td>
-		</tr>
+.formPanel fieldset.rememberMe * {
+    display: inline;
+    font-size: 1em;
+    font-weight: normal;
+    height: 1em;
+    line-height: 1em;
+    margin: 0 0.2em;
+    vertical-align: middle;
+    width: auto;
+}
+button:disabled, input[type="submit"]:disabled, .touchbutton.disabled, .o2body .touchbutton.disabled {
+    color: #dfdfdf;
+}
+button[type="submit"], .o2body input[type="submit"] {
+    cursor: pointer;
+    height: 2.25em;
+    padding: 0 1em;
+    width: auto;
+}
+button, .touchbutton, .touchbutton:link, .touchbutton:visited, .o2body .touchbutton, .o2body .touchbutton:link, .o2body .touchbutton:visited, .button, .button:link, .button:visited, .o2body input[type="submit"] {
+    background-color: #0086c3;
+    background-image: -moz-linear-gradient(center top , rgba(51, 158, 207, 1) 0%, rgba(1, 108, 157, 1) 100%);
+    border: medium none;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
+}
+.banner {
+    background-color: transparent;
+    background-image: url('img/banner_bg.png');
+    background-position: left top;
+    background-repeat: repeat-x;
+    border-radius: 10px 10px 0 0;
+    height:105px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: auto;
+}
+.wrapper {
+    padding-bottom: 0;
+    width: 100%;
+}
 
-		<tr>
-			<td><label>Password:</label></td>
-			<td><input type="password" name="password"
-				ng-model="admin.password" ng-minlength="3" ng-maxlength="50" required></td>
-			<td><span ng-show="loginform.password.$invalid">Password
-					is mandatory and size should be between 3 & 50. </span></td>
-		</tr>
+.o2body {
+    font-family: verdana,sans-serif;
+    font-size: 13px;
+    line-height: 1.231;
+    padding: 0 0 1em;
+}
+body,html {
+	color: white;
+	background: url('../img/o2background.png') repeat-x scroll 0px 0px
+		#449ed0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1em;
+	clear: both;
+	display: block;
+}
+.col1 {
+    margin: 0em 1% 1em 0;
+    width: 100%;
+}
+</style>
 
-		<tr>
-			<td><label>Environment:</label></td>
-			<td><input type="radio" ng-model="admin.env" value="ref"
-				name="environment" ng-required="!loginform.admin.env"> REF <input
-				type="radio" ng-model="admin.env" value="live" name="environment"
-				ng-required="!loginform.admin.env">LIVE <input
-				type="radio" ng-model="admin.env" value="dev" name="environment"
-				ng-required="!loginform.admin.env">Dev</td>
-			<td><span ng-show="loginform.environment.$invalid">Atleast
-					one environment should be selected.</span></td>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>
-				<button class="btn-primary" ng-click="submitForm()"
-					ng-disabled="loginform.$invalid" style="background-color: #191970">Submit</button>
-				<button type="reset" class="btn-primary" ng-click="resetLogin()"
-					style="background-color: #191970">Reset</button>
-			</td>
-		</tr>
 
-	</table>
-	<div ng-bind="loginError"></div>
+<body>
+<table  style="margin-top: 26px;width:100%" >
+<tr>
+<td width="50%"></td>
+<td width="50%">
 
-</form>
+<div class="o2body">  
+    <div class="banner" > 
+     <h1>Sign in</h1> 
+    </div> 
+    <div class="col1"> 
+     <div class="formPanel"> 
+      <div class="panelContentWrap"> 
+       <h2 class="desktopview">Sign in to My O2</h2> 
+       <p class="mobileview">Sign in to access your billing details or make changes to your account.</p> 
+       <form method="post" name="loginForm" novalidate id="loginForm"> 
+        <fieldset> 
+         <label for="username">Username<span class="red-star">*</span> </label> 
+         <input type="text" ng-model="adminUserName" maxlength="320" id="username" ng-minlength="3" ng-maxlength="50"  value="" required="required" name="username"> 
+         <label for="password">Password<span class="red-star">*</span></label> 
+         <input type="password"  ng-model="adminPassword" ng-minlength="3" ng-maxlength="50"  value="" required="required" name="password">
+          <label for="environment">Environment<span class="red-star">*</span></label>
+       	  <select name="environment" style="width:336px;" ng-model="adminEnv" ng-required="!loginform.admin.env" >
+				<option value="" >Select Environment</option>
+				<option value="ref" >REF</option>
+				<option value="live">LIVE</option>
+				<option value="dev">DEV</option></select>
+			
+        </fieldset> 
+        <input type="submit" value="Sign in" id="signInButton" ng-disabled="loginform.$invalid" ng-click="submitForm()" class="disabled"> 
+        <div ng-bind="loginAdmin_message" class="errorMessage"></div>
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+      
+   </div></td>
+   </tr>
+</table>
+
+</body>
+</html>

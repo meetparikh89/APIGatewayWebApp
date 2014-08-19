@@ -38,11 +38,5 @@ AdminUtilityApp.controller('NavigatorController', function($scope,$cookies,$root
 		}, {
 			name : "Create Admin",
 			hrefValue:"#createAdmin"
-		}, {
-			name : "Get IP Range",
-			hrefValue:"#getAdminIpRange"
-		}, {
-			name : "Manage IP Range",
-			hrefValue:"#editAdminIpRange"
 		}];
 });

@@ -1,21 +1,97 @@
+<style>
+.ajax-loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -32px; /* -1 * image width / 2 */
+	margin-top: -32px; /* -1 * image height / 2 */
+	display: block;
+}
+</style>
 <div class="jumbotron text-center">
+	<div id="loader" style="display:none">
+		<img src="img/page-loader.gif" class="ajax-loader" />
+	</div>
 	<table style="text-align: left;">
 		<tr>
-			<td> <span style="color: red;">*</span>Name : </td>
-			<td> <input type="text" ng-model="adminName" ng-disabled="isUpdate"/> </td>
+			<td><span style="color: red;">*</span>Name :</td>
+			<td><input type="text" ng-model="adminName"
+				ng-disabled="isUpdate" /></td>
 		</tr>
 		<tr>
-			<td> <span style="color: red;">*</span>Password : </td>
-			<td> <input type="password" ng-model="password"/> </td>
+			<td><span style="color: red;">*</span>Password :</td>
+			<td><input type="password" ng-model="password" /></td>
 		</tr>
 		<tr>
-			<td> <span style="color: red;">*</span>Confirm Password : </td>
-			<td> <input type="password" ng-model="confirmPassword"/> </td>
+			<td><span style="color: red;">*</span>Confirm Password :</td>
+			<td><input type="password" ng-model="confirmPassword" /></td>
 		</tr>
 		<tr>
-			<td collspan="2"><button class="btn-primary" ng-click="saveAdmin()">Save</button></td>
+			<td collspan="2"><button class="btn-primary"
+					ng-click="saveAdmin()">Save</button></td>
 		</tr>
 	</table>
 	<div ng-bind="createAdmin_message" class="errorMessage"></div>
 	<div ng-bind="createAdmin_Sucmessage" class="successMessage"></div>
+	<div>
+		<h3>
+			<u>IP Range</u>
+		</h3>
+		<input type="search" ng-model="searchRange" />
+		<div ng-bind="adminiprange_message" class="errorMessage"></div>
+		<br />
+		<!-- <table ng-table="listRangeTable" border="true">
+			<tr>
+				<th>Sr.</th>
+				<th>Name</th>
+				<th>From</th>
+				<th>To</th>
+			</tr>
+			<tr ng-repeat="range in ipRanges | filter : searchRange">
+				<td>{{$index+1}}</td>
+				<td>{{range.name}}</td>
+				<td>{{range.from}}</td>
+				<td>{{range.to}}</td>
+				<td width="40px"><img src="img/delete.png"
+					title="Delete IP Range" ng-click="deleteIPRange(range.name)"
+					style="cursor: pointer"> </img></td>
+			</tr>
+		 </table>-->
+	</div>
+	<div style="text-align: right;">
+		<label style="font-size: medium; font-weight: normal;">No. of
+			rows to add : </label> <input type="number" ng-model="rangeCount"
+			style="width: 50px"
+			onkeypress='return ((event.charCode >= 48 && event.charCode <= 57) || event.keyCode == 46 || event.keyCode == 8)' />
+		<button style="font-size: medium; font-weight: normal;" type="button"
+			ng-model="add" ng-click="addRanges()">Add</button>
+	</div>
+
+	<table width="100%">
+		<tr>
+			<th>Name</th>
+			<th>From</th>
+			<th>To</th>
+		</tr>
+
+		<tr ng-repeat="range in ipRanges | filter : searchRange">
+			<td><input type="text" ng-model="range.name"
+				style="text-align: center;" ng-disabled="isEditable(range)" /></td>
+			<td><input type="text" ng-model="range.from"
+				style="text-align: center;" /></td>
+			<td><input type="text" ng-model="range.to"
+				style="text-align: center;" /></td>
+			<td><img ng-model="imgRemove" src="img/delete.png"
+				ng-click="removeRange(range)" title="Remove" /></td>
+		</tr>
+
+		<tr>
+			<td collspan="3" align="left"><button class="btn-primary" ng-click="save()">Submit</button></td>
+		</tr>
+
+	</table>
+
+	<div ng-bind="creationMessage" class="successMessage"></div>
+	<div ng-bind="errorMessage" class="errorMessage"></div>
+
 </div>

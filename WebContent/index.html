@@ -46,21 +46,29 @@
 <link rel="stylesheet" type="text/css" href="css/autocomplete.css" />
 
 </head>
+
 <body>
 	<div id="main">
 		<div id="banner">
-			<center>
-				<img src="img/logo-o2.svg" style="margin-right: 50px;"></img> <span
-					style="font-weight: bold;">API Gateway</span> <img
+		<table>
+			<tr>
+			<td width="84%">
+			<Center> <img src="img/logo-o2.svg" style="margin-right: 50px;"></img> <span
+					style="font-weight: bold;color:black;">API Gateway Admin Utility</span> <img
 					src="img/logo-telefonica.svg" style="margin-left: 50px;"></img>
-			</center>
+					</Center></td>
+					<td width="16%"><img src="img/cognizant-logo-icon.gif" style="margin-right:1 px;"></img></td>
+		</tr>
+		</table>
 		</div>
 		<div ng-show="loginstatus == 'true'"
 			ng-controller="NavigatorController">
 			<div id="menu">
 				<div class="logoutBox">
-				<span style="vertical-align: middle;">Logged into {{env | uppercase}} <a href="loginservlet"><img
-						src="img/logout.png" style="padding: 5px" title="Log Out"></img></a></span>	
+				<span style="vertical-align: middle;"><a href="loginservlet"><img
+						src="img/logout.png" style="padding: 5px" title="Log Out"></img></a>
+						Welcome, {{user|uppercase}} <u style="color: blue";>{{env | uppercase}}</u>
+						</span>	
 				</div>
 				<accordion close-others="true"> 
 					<accordion-group heading="Client" is-open="false">
@@ -75,7 +83,7 @@
 						</p>
 					</accordion-group>
 
-					 <accordion-group heading="Provisioning" is-open="false">
+					 <accordion-group heading="Client Provisioning" is-open="false">
 						<p ng-repeat="provision in provisioningOptions">
 						<a href={{provision.hrefValue}}>{{provision.name}}</a>
 						</p>
@@ -88,10 +96,15 @@
 					</accordion-group> 
 				</accordion>
 			</div>
-			<div style="float: right;text-decoration: blink; " class="logoutBox">Welcome, {{user|uppercase}}</div>
+			<!-- <div style="float: right;text-decoration: blink; " class="logoutBox">Welcome, {{user|uppercase}} on <u style="color: red";> {{env | uppercase}}</u>
+			</div> -->
+			
+			
 		</div>
 		<div ng-view class="views"></div>
-		
-	</div>
+	
+	
+	</div>	
+	
 </body>
 </html>

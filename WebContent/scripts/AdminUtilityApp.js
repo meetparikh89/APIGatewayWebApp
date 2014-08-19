@@ -67,14 +67,6 @@ var AdminUtilityApp = angular.module('AdminUtilityApp', ['ngRoute','ui.bootstrap
                     	 controller : "CreateAdminController",
                          templateUrl: "views/CreateAdmin.html"
                     })
-                    .when('/getAdminIpRange',{
-                    	 controller : "AdminIPRangeDetailsController",
-                         templateUrl: "views/AdminIPRangeDetails.html"
-                    })
-                    .when('/editAdminIpRange',{
-                    	 controller : "AdminIPRangeEditorController",
-                         templateUrl: "views/AdminIPRangeEditor.html"
-                    })
                     .when('/deprovisioning',{
                         controller : "DeprovisioningClient",
                         templateUrl: "views/deprovisionClient.html"
